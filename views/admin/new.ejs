@@ -1,0 +1,93 @@
+<%include ../partial/header%>
+<div class="container">
+	<div class="row">
+		<h1 style="text-align: center;">Creat a new campground</h1>
+		<div style="width: 100%; margin:25px auto;">
+			<form method="POST" action="/admin/campgrounds">
+				<div class="form-group">
+				 <input type="text" class="form-control" name="camp_name" placeholder="camp name">
+				</div>
+				<div class="form-group">
+				 <input type="text" class="form-control" name="camp_image" placeholder="camp image link">
+				</div>
+				<div class="form-group">
+				 <input type="text" class="form-control" name="camp_img_alt" placeholder="camp image alt tag">
+				</div>
+				<div class="form-group">
+				  <textarea id="edit" name="camp_description"></textarea>
+				</div>
+         <div class="form-group">
+          <select name="camp_blogtype">
+            <option selected value="Health & fintness">Health & fintness</option>
+            <option value="Travel">Travel</option>
+            <option value="Lifestyle $ Leisure">Lifestyle $ Leisure</option>
+            <option value="Music">Music</option>
+            <option value="Technologies">Technologies</option>
+            <option value="Design & Art">Design & Art</option>
+            <option value="Self Development">Self Development</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="Business">Business</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <select name="camp_activity">
+            <option selected value="active">Active</option>
+            <option value="inactive">Inactive</option>
+          </select>
+        </div>
+				<div class="form-group">
+				 <button class="btn btn-lg btn-primary btn-block" type="submit">Add new campground</button>	
+			    </div>
+			</form>
+			<a href="/admin">go back</a>	
+		</div>
+	</div>
+</div>
+<script type='text/javascript' src='https://cdn.jsdelivr.net/npm/froala-editor@3.0.5/js/froala_editor.pkgd.min.js'></script>
+  <script>
+    new FroalaEditor('#edit', {
+    	imageUploadParam: 'photo',
+    imageUploadURL: '/uploadblogimage',
+    imageUploadParams: {id: 'my_editor'},
+    imageUploadMethod: 'POST',
+    imageMaxSize: 5 * 1024 * 1024,
+   imageAllowedTypes: ['jpeg', 'jpg', 'png'],
+
+    events: {
+      'image.beforeUpload': function (images) {
+        // Return false if you want to stop the image upload.
+      },
+      'image.uploaded': function (response) {
+      },
+      'image.inserted': function ($img, response) {
+      },
+      'image.replaced': function ($img, response) {
+      },
+      'image.error': function (error, response) {
+        // Bad link.
+        if (error.code == 1) { console.log(error.code); }
+
+        // No link in upload response.
+        else if (error.code == 2) { console.log(error.code); }
+
+        // Error during image upload.
+        else if (error.code == 3) { console.log(error.code);}
+
+        // Parsing response failed.
+        else if (error.code == 4) {console.log(error.code);}
+
+        // Image too text-large.
+        else if (error.code == 5) {console.log(error.code);}
+
+        // Invalid image type.
+        else if (error.code == 6) {console.log(error.code);}
+
+        // Image can be uploaded only to same domain in IE 8 and IE 9.
+        else if (error.code == 7) { console.log(error.code);}
+
+        // Response contains the original server response to the request if available.
+      }
+    }
+  })
+</script>
+<%include ../partial/footer%>

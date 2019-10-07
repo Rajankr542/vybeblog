@@ -1,0 +1,98 @@
+  <div class="partner-box">
+          <div class="wrapper">
+            <div class="colum">
+              <h2>Partner With Us</h2>
+            </div>
+            <div class="colum">
+              <p>Optimized living in the greatest cities</p>
+            </div>
+            <div class="colum">
+              <a href="javascript:;">get started</a>
+            </div>
+          </div>
+        </div>
+ <div id="top">
+        <footer>
+          <div class="wrapper">
+            <div class="col-3">
+              <p>© Copyright 2019 Vybe Living</p>
+              <a href="javascript:;">Terms & Conditions</a>
+            </div>
+            <div class="box">
+              <div class="col-3">
+                <div class="col">
+                  <h4>Quick Links</h4>
+                  <ul class="link">
+                    <li><a href="About.html">About Us</a></li>
+                    <li><a href="Listings.html">Our Listings</a></li>
+                    <li><a href="Amenities.html">Amenities</a></li>
+                    <li><a href="Howitworks.html">How It Works</a></li>
+                    <li><a href="Contact.html">Contact Us</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="box">
+              <div class="col-3">
+                <div class="col">
+                  <h4>Reach Us</h4>
+                   <address>
+                        <p>2201 Market St, San Francisco, <br> CA 94114, USA</p>
+                   </address>
+                </div>
+              </div>
+              <div class="col-3">
+                <h4>Mail Us</h4>
+                <a href="mailto:info@vybeliving.com">info@vybeliving.com</a>
+              </div>
+              <div class="col-3">
+                <h4>Follow Us</h4>
+                <ul class="social">
+                  <li><a href="https://www.facebook.com/vybeliving" target="_blank">facebook</a></li>
+                  <li><a href="https://www.instagram.com/vybeliving/" target="_blank">instagram</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+<script>
+var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  for (i = 0; i < 3; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > 3) {slideIndex = 1}    
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+  setTimeout(showSlides, 2000); // Change image every 2 seconds
+}
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+  if(screen.width < 979){
+    $(".bars").click(function(){
+      $(".bars").toggleClass("change");
+    });///
+    $(".bars").click(function(){
+      $("header").toggleClass("open");
+    });///
+    $(".bars").click(function(){
+      $("body").toggleClass("overflow");
+    });///
+  }
+});
+</script>
+
+</body>
+</html>

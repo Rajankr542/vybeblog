@@ -1,0 +1,120 @@
+<%include ../partial/header%>
+<div class="container">
+	<div class="row">
+		<h1 style="text-align: center;">Creat a new campground</h1>
+		<div style="width: 100%; margin:25px auto;">
+			<form method="POST" action="/admin/campgrounds/<%=Campground._id%>?_method=PUT">
+				<div class="form-group">
+				 <input type="text" class="form-control" name="campground[name]" value="<%=Campground.name%>">
+				</div>
+				<div class="form-group">
+				 <input type="text" class="form-control" name="campground[image]" value="<%=Campground.image%>">
+				</div>
+				<div class="form-group">
+				 <input type="text" class="form-control" name="campground[alt]" value="<%=Campground.alt%>">
+				</div>
+				<div class="form-group">
+				  <textarea id="edit" name="campground[description]"><%=Campground.description%></textarea>
+				</div>
+        <div class="form-group">
+          <select name="campground[activity_status]">
+            <option <%if(Campground.activity_status=='active'){%>
+              selected
+              <%}%> value="active">Active</option>
+            <option <% if(Campground.activity_status=='inactive'){%>
+              selected
+              <%}%> value="inactive">Inactive</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <select name="campground[blogtype]">
+            <option
+            <%if(Campground.blogtype=='Health & fintness'){%>
+              selected
+              <%}%>  value="Health & fintness">Health & fintness</option>
+
+            <option <%if(Campground.blogtype=='Travel'){%>
+              selected
+              <%}%> value="Travel">Travel</option>
+            <option <%if(Campground.blogtype=='Lifestyle $ Leisure'){%>
+              selected
+              <%}%> value="Lifestyle $ Leisure">Lifestyle $ Leisure</option>
+            <option <%if(Campground.blogtype=='Music'){%>
+              selected
+              <%}%> value="Music">Music</option>
+            <option <%if(Campground.blogtype=='Technologies'){%>
+              selected
+              <%}%> value="Technologies">Technologies</option>
+            <option <%if(Campground.blogtype=='Design & Art'){%>
+              selected
+              <%}%> value="Design & Art">Design & Art</option>
+            <option <%if(Campground.blogtype=='Self Development'){%>
+              selected
+              <%}%>value="Self Development">Self Development</option>
+            <option <%if(Campground.blogtype=='Entertainment'){%>
+              selected
+              <%}%>value="Entertainment">Entertainment</option>
+            <option <%if(Campground.blogtype=='Business'){%>
+              selected
+              <%}%>value="Business">Business</option>
+          </select>
+        </div>
+				<div class="form-group">
+				 <button class="btn btn-lg btn-primary btn-block" type="submit">Update Campground</button>	
+			    </div>
+			</form>
+       <form id="delete-form" action="/admin/campgrounds/<%=Campground._id%>?_method=DELETE" method="post">
+        <button class="btn btn-danger btn-xs">delete</button></form>
+			<a href="/admin">go back</a>	
+		</div>
+	</div>
+</div>
+<script type='text/javascript' src='https://cdn.jsdelivr.net/npm/froala-editor@3.0.5/js/froala_editor.pkgd.min.js'></script>
+ <script>
+    new FroalaEditor('#edit', {
+    	imageUploadParam: 'photo',
+    imageUploadURL: '/uploadblogimage',
+    imageUploadParams: {id: 'my_editor'},
+    imageUploadMethod: 'POST',
+    imageMaxSize: 5 * 1024 * 1024,
+   imageAllowedTypes: ['jpeg', 'jpg', 'png'],
+
+    events: {
+      'image.beforeUpload': function (images) {
+        // Return false if you want to stop the image upload.
+      },
+      'image.uploaded': function (response) {
+      },
+      'image.inserted': function ($img, response) {
+      },
+      'image.replaced': function ($img, response) {
+      },
+      'image.error': function (error, response) {
+        // Bad link.
+        if (error.code == 1) { console.log(error.code); }
+
+        // No link in upload response.
+        else if (error.code == 2) { console.log(error.code); }
+
+        // Error during image upload.
+        else if (error.code == 3) { console.log(error.code);}
+
+        // Parsing response failed.
+        else if (error.code == 4) {console.log(error.code);}
+
+        // Image too text-large.
+        else if (error.code == 5) {console.log(error.code);}
+
+        // Invalid image type.
+        else if (error.code == 6) {console.log(error.code);}
+
+        // Image can be uploaded only to same domain in IE 8 and IE 9.
+        else if (error.code == 7) { console.log(error.code);}
+
+        // Response contains the original server response to the request if available.
+      }
+    }
+  })
+</script>
+
+<%include ../partial/footer%>

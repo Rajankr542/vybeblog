@@ -1,0 +1,166 @@
+<% include ../partial/header %>
+<div class="row_banner_section slideshow-container">
+	<% campgrounds.forEach(function(campground){ %>
+	<% if(campground.activity_status=='active'){%>
+			<div class="banner_section mySlides fade">
+				<div class="banner_img">
+				<img src="<%= campground.image %>" alt="<%=campground.alt%>">
+				</div>
+				<div class="name_of_camp">
+					<div class="blogtype_name">
+					 <p><a href="/campgrounds/<%=campground._id%>"><%= campground.blogtype %></a></p>
+					 </div>
+					 <div class="blog_title">
+					 <p><a href="/campgrounds/<%=campground._id%>"><h4><%= campground.name %></h4></a></p>
+					</div>
+					<div class="description_sec">
+					 <p><%- campground.description.substr(0, 100) %>....</p>
+					 </div>
+			    </div>
+			</div>
+			<%}%>
+	<% }); %>
+	<div class="dot_class">
+	  <span class="dot" ></span> 
+	  <span class="dot" ></span> 
+	  <span class="dot" ></span> 
+	</div>
+</div>
+
+
+
+	<div class="row filter_listing_container navbar_bar" id="row filter_listing_container">
+		<div class="filter_listing dropdown_bar" id="filter_listing">
+
+			<button class="dropbtn_bar">Browse Categories<i class="fa fa-caret-down"></i>
+			    </button>
+
+
+				<form method="post" action="/campgrounds/filter_value/<%Filter_value.forEach(function(filter_value){%><%=filter_value._id%>?_method=PUT" class="filter_form_true dropdown-content_bar">
+								
+								<div class="filter_listing_element <%if(filter_value.filter_value=='All'){%>live<%}%>">
+							<label for="All">All</label>
+							<input type="radio" name="filter_value" value="All" id="All" onchange="submit()">
+							</div>
+ 
+							<div class="filter_listing_element <%if(filter_value.filter_value=='Health & fintness'){%>live<%}%>">
+							<label for="Health_&_fintness">Health & fintness</label>
+							<input type="radio" name="filter_value" value="Health & fintness" id="Health_&_fintness" onchange="submit()">
+							</div>	
+
+							<div class="filter_listing_element <%if(filter_value.filter_value=='Travel'){%>live<%}%>">
+							<label for="Travel">Travel</label>
+							<input type="radio" name="filter_value" value="Travel" id="Travel" onchange="submit()">
+							</div>
+
+							<div class="filter_listing_element <%if(filter_value.filter_value=='Lifestyle $ Leisure'){%>live<%}%>">
+							<label for="Lifestyle_$_Leisure">Lifestyle $ Leisure</label>
+							<input type="radio" name="filter_value" value="Lifestyle $ Leisure" id="Lifestyle_$_Leisure" onchange="submit()">
+							</div>
+
+								<div class="filter_listing_element <%if(filter_value.filter_value=='Music'){%>live<%}%>">
+							<label for="Music">Music</label>
+							<input type="radio" name="filter_value" value="Music" id="Music" onchange="submit()">
+							</div>
+
+								<div class="filter_listing_element <%if(filter_value.filter_value=='Technologies'){%>live<%}%>">
+							<label for="Technologies">Technologies</label>
+							<input type="radio" name="filter_value" value="Technologies" id="Technologies" onchange="submit()">
+							</div>
+
+								<div class="filter_listing_element <%if(filter_value.filter_value=='Design & Art'){%>live<%}%>">
+							<label for="Design_&_Art">Design & Art</label>
+							<input type="radio" name="filter_value" value="Design & Art" id="Design_&_Art" onchange="submit()">
+							</div>
+
+								<div class="filter_listing_element <%if(filter_value.filter_value=='Self Development'){%>live<%}%>">
+							<label for="Self_Development">Self Development</label>
+							<input type="radio" name="filter_value" value="Self Development" id="Self_Development" onchange="submit()">
+							</div>
+
+								<div class="filter_listing_element <%if(filter_value.filter_value=='Entertainment'){%>live<%}%>">
+							<label for="Entertainment">Entertainment</label>
+							<input type="radio" name="filter_value" value="Entertainment" id="Entertainment" onchange="submit()">
+							</div>
+
+							<div class="filter_listing_element <%if(filter_value.filter_value=='Business'){%>live<%}%>">
+							<label for="Business">Business</label>
+							<input type="radio" name="filter_value" value="Business" id="Business" onchange="submit()">
+							</div>
+
+							<%});%>
+					</form>		
+		</div>	
+	</div>
+
+<div class="custom_container_for_templeate">
+<div class="row text-center">
+	
+	<% Filter_value.forEach(function(filter_value){ %>
+	<% campgrounds.forEach(function(campground){ %>
+	<% if(campground.activity_status=='active'){%>
+
+<%if(filter_value.filter_value!='All'){%>
+	<% if(campground.blogtype==filter_value.filter_value){%>
+		<div class="templete_container">
+			<div class="thumbnail">
+				<div class="templete_image_container">
+				<img src="<%= campground.image %>" alt="<%=campground.alt%>">
+				</div>
+				<div class="templete_descrip_container">
+				<div class="blogtype_name_for_templeate">
+					 <p><a href="/campgrounds/<%=campground._id%>"><%= campground.blogtype %></a></p>
+				</div>
+				<div class="caption">
+			 <h4><%= campground.name %></h4>
+			    </div>
+			    <div class="description_sec">
+					 <p><%= campground.description.substr(0, 100) %>....</p>
+				</div>
+				</div>
+			</div>
+		</div>
+<%}%>
+<%}%>
+
+<%if(filter_value.filter_value=='All'){%>
+		<div class="templete_container">
+			<div class="thumbnail">
+				<div class="templete_image_container">
+				<img src="<%= campground.image %>" alt="<%=campground.alt%>">
+				</div>
+				<div class="templete_descrip_container">
+				<div class="blogtype_name_for_templeate">
+					 <p><a href="/campgrounds/<%=campground._id%>"><%= campground.blogtype %></a></p>
+				</div>
+				<div class="caption">
+			 <h4><%= campground.name %></h4>
+			    </div>
+			    <div class="description_sec">
+					 <p><%= campground.description.substr(0, 100) %>....</p>
+				</div>
+				</div>
+			</div>
+		</div>
+<%}%>
+
+
+<%}%>
+	<% }); %>
+	<% }); %>
+
+	</div>
+</div>
+
+
+
+
+<script type="text/javascript">
+$(".filter_listing_element").on('click', function(){
+	$('.filter_form_true').submit();
+});
+
+</script>
+
+
+<% include ../partial/footer %>

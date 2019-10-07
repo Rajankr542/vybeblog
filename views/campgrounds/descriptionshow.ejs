@@ -1,0 +1,92 @@
+<% include ../partial/header %>
+
+<div class="des_page row header_banner">
+	<img class="des_page img-responsive" src="<%=campgrounds.image%>" alt="<%=campgrounds.alt%>">
+</div>
+
+<div class="des_page container">
+<div class="des_page row">
+
+	<div class="des_page description_show">
+		<div class="des_page caption-full">
+			<div class="des_page blog-type"><p><%= campgrounds.blogtype%></p></div>
+			<div class="des_page blog-name"><h1><%= campgrounds.name%></h1></div>
+			
+			<div class="des_page author_details">
+			<div class="author_image_container">
+				<img src="/images/author-img.png">
+				<div class="autor_name_sec">
+					<p><b>Mark Galieo</b></p>
+					<p>Vybeliving #232 Mission Street</p>
+				</div>
+			</div>
+			<div class="author_time_container">
+				<img src="/images/calander-img.png">
+				<p>10 Sep 2019</p>
+			</div>	
+			</div>
+			
+			<div class="des_page blog-message"><%-campgrounds.description%></div>
+		</div>		
+	</div>
+
+<!-- 	<div class="des_page well">
+		<%campgrounds.comments.forEach(function(comments){%>
+		<div class="des_page row">
+			<div class="des_page col-md-12">
+				<strong><%=comments.author%></strong>
+				<span class="des_page pull-right">10 days ago..</span>
+				<p><%=comments.text%></p>
+			</div>
+		</div>
+		<%}); %>
+	</div> -->
+
+</div>
+
+<div class="share_container">
+	<p class="share_message">Share this:</p>
+	<table class="table table-bordered">
+		<thead>
+		<th><img src="/images/fb-icn.png"></th>
+		<th><img src="/images/twitter-icn.png"></th>
+		<th><img src="/images/linked-in-icn.png"></th>
+		<th><img src="/images/3dot-icn.png"></th>
+		</thead>
+	</table>
+</div>
+
+<div class="comment_form_container">
+	<div class="leave_message">
+		<p>Leave a Reply</p>
+	</div>
+	<div class="labled_message_for_comment">
+		<p>Your email address will not be published.Required fields are marked*</p>
+	</div>
+ <form  method="POST" action="/campgrounds/<%=campgrounds._id%>/comments">
+	<div class="text_area_container">
+		<textarea rows="5" cols="100" name="comment[text]" id="textarea_comment" class="textarea_comment" placeholder="Comment*"></textarea>  
+	</div>
+	<div class="input_comment_container_parent">
+	<div class="input_comment_container">
+		<input type="text" name="comment[author]" class="input_commet" placeholder="Name*">
+	</div>
+	<div class="input_comment_container">
+		<input type="text" name="comment[email]" class="input_commet" placeholder="Email*">
+	</div>
+	</div>
+	<div class="comment_submit_button_container">
+		<button class="comment_submit_button" type="submit">submit</button>
+	</div>
+
+
+</form>
+</div>
+
+
+
+
+</div>
+
+
+<% include ../partial/footer %>
