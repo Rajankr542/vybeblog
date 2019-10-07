@@ -18,7 +18,7 @@ campgroundroutes	=require("./routes/campground"),
 indexroutes 		=require("./routes/index"),
 adminroutes			=require("./routes/admin");
 
-seedDB();
+
 
 mongoose.connect('mongodb+srv://rajankr5422:Rajan@9818@cluster0-jlil9.mongodb.net/Yelp_camp?retryWrites=true&w=majority', {useNewUrlParser: true});
 
