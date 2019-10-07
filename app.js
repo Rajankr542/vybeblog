@@ -20,7 +20,7 @@ adminroutes			=require("./routes/admin");
 
 seedDB();
 // mongoose.connect('mongodb://localhost:27017/yelp_camp', {useNewUrlParser: true});
-mongoose.connect('mongodb+srv://rajankr5422:<password>@cluster0-jlil9.mongodb.net/yelp_camp?retryWrites=true&w=majority', {useNewUrlParser: true});
+mongoose.connect('mongodb+srv://rajankr5422:Rajan@9818@cluster0-jlil9.mongodb.net/yelp_camp?retryWrites=true&w=majority', {useNewUrlParser: true});
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine","ejs");
