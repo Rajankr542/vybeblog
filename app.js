@@ -19,7 +19,9 @@ indexroutes 		=require("./routes/index"),
 adminroutes			=require("./routes/admin");
 
 seedDB();
-mongoose.connect('mongodb://localhost:27017/yelp_camp', {useNewUrlParser: true});
+// mongoose.connect('mongodb://localhost:27017/yelp_camp', {useNewUrlParser: true});
+mongoose.connect('mongodb+srv://rajankr5422:<password>@cluster0-jlil9.mongodb.net/yelp_camp?retryWrites=true&w=majority', {useNewUrlParser: true});
+
 app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine","ejs");
 app.use(express.static(__dirname+"/public"));
@@ -51,6 +53,6 @@ app.use(commentsroutes);
 app.use(adminroutes);
 
 
-app.listen(3000,function(req,res){
+app.listen(process.env.PORT,process.env.IP,function(req,res){
 	console.log("This page serve on the port 3000!!!");
 });
