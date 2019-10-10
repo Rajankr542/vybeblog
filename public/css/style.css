@@ -3699,6 +3699,7 @@ input[name=filter_value] {
 .templete_image_container img {
     width: 100%;
     height: 330px;
+    object-fit: cover;
 }
 
 .templete_container .caption {

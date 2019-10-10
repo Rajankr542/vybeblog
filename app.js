@@ -59,5 +59,5 @@ app.use(adminroutes);
 // });
 
 app.listen(process.env.PORT,process.env.IP,function(req,res){
-	console.log("This page serve on the port 3000hgjghf!!!");
+	console.log("This page serve on the port 3000!!!");
 });
