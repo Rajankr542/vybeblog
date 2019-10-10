@@ -14,7 +14,7 @@
 					 <p><a href="/campgrounds/<%=campground._id%>"><h4><%= campground.name %></h4></a></p>
 					</div>
 					<div class="description_sec">
-					 <p><%- campground.description.substr(0, 100) %>....</p>
+					 <p><%-campground.description.substr(0, 100) %>....</p>
 					 </div>
 			    </div>
 			</div>
@@ -115,7 +115,7 @@
 			 <h4><%= campground.name %></h4>
 			    </div>
 			    <div class="description_sec">
-					 <p><%= campground.description.substr(0, 100) %>....</p>
+					 <p><%- campground.description.substr(0, 100) %>....</p>
 				</div>
 				</div>
 			</div>
@@ -137,7 +137,7 @@
 			 <h4><%= campground.name %></h4>
 			    </div>
 			    <div class="description_sec">
-					 <p><%= campground.description.substr(0, 100) %>....</p>
+					 <p><%- campground.description.substr(0, 100) %>....</p>
 				</div>
 				</div>
 			</div>

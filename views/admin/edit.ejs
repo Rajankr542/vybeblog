@@ -1,22 +1,28 @@
 <%include ../partial/header%>
 <div class="container">
-	<div class="row">
-		<h1 style="text-align: center;">Creat a new campground</h1>
-		<div style="width: 100%; margin:25px auto;">
-			<form method="POST" action="/admin/campgrounds/<%=Campground._id%>?_method=PUT">
-				<div class="form-group">
-				 <input type="text" class="form-control" name="campground[name]" value="<%=Campground.name%>">
-				</div>
-				<div class="form-group">
-				 <input type="text" class="form-control" name="campground[image]" value="<%=Campground.image%>">
-				</div>
-				<div class="form-group">
-				 <input type="text" class="form-control" name="campground[alt]" value="<%=Campground.alt%>">
-				</div>
-				<div class="form-group">
-				  <textarea id="edit" name="campground[description]"><%=Campground.description%></textarea>
-				</div>
+  <div class="row">
+    <h2>Creat a new Blog</h2>
+    <div class="col-md-12">
+      <div class="form_left_container">
+      <form method="POST" action="/admin/campgrounds/<%=Campground._id%>/banner?_method=PUT" enctype="multipart/form-data">
+         <div class="input_type_file_container"><label for="input_type_file" class="image_upload_container"><img src="https://image.flaticon.com/icons/svg/149/149145.svg"><br/>Update Banner</label>
+         <input type="file" class="input_type_file" name="photo" id="input_type_file" onchange="submit()">
+        </div>
+      </form></div>
+
+      <form method="POST" action="/admin/campgrounds/<%=Campground._id%>?_method=PUT">
+        <div class="form_left_container">
         <div class="form-group">
+         <input type="text" class="form-control" name="campground[name]" value="<%=Campground.name%>">
+        </div>
+        <div class="form-group">
+         <input type="text" class="form-control" name="campground[alt]" value="<%=Campground.alt%>">
+        </div>
+        <div class="form-group">
+          <textarea id="edit" name="campground[description]"><%=Campground.description%></textarea>
+        </div>
+
+         <div class="form-group">
           <select name="campground[activity_status]">
             <option <%if(Campground.activity_status=='active'){%>
               selected
@@ -26,8 +32,15 @@
               <%}%> value="inactive">Inactive</option>
           </select>
         </div>
-        <div class="form-group">
-          <select name="campground[blogtype]">
+
+        </div>
+
+            <div class="form_right_container">
+       
+         <div class="form-group admin_blog_type_container">
+            <p>Organization</p>
+            <div class="admin_blog_ogganisation">
+         <select name="campground[blogtype]">
             <option
             <%if(Campground.blogtype=='Health & fintness'){%>
               selected
@@ -59,20 +72,27 @@
               <%}%>value="Business">Business</option>
           </select>
         </div>
-				<div class="form-group">
-				 <button class="btn btn-lg btn-primary btn-block" type="submit">Update Campground</button>	
-			    </div>
-			</form>
-       <form id="delete-form" action="/admin/campgrounds/<%=Campground._id%>?_method=DELETE" method="post">
+      </div>
+
+      </div>
+
+          <div class="form-group">
+         <button class="btn btn-lg btn-primary btn-block" type="submit">Update Campground</button>  
+          </div>
+
+      </form>
+      <form id="delete-form" action="/admin/campgrounds/<%=Campground._id%>?_method=DELETE" method="post">
         <button class="btn btn-danger btn-xs">delete</button></form>
-			<a href="/admin">go back</a>	
-		</div>
-	</div>
+
+            <a href="/admin" class="btn btn-xs btn-danger">go back</a>  
+    </div>
+
+  </div>
 </div>
 <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/froala-editor@3.0.5/js/froala_editor.pkgd.min.js'></script>
- <script>
+  <script>
     new FroalaEditor('#edit', {
-    	imageUploadParam: 'photo',
+      imageUploadParam: 'photo',
     imageUploadURL: '/uploadblogimage',
     imageUploadParams: {id: 'my_editor'},
     imageUploadMethod: 'POST',
@@ -116,5 +136,4 @@
     }
   })
 </script>
-
 <%include ../partial/footer%>

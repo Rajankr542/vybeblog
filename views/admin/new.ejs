@@ -1,22 +1,36 @@
 <%include ../partial/header%>
 <div class="container">
 	<div class="row">
-		<h1 style="text-align: center;">Creat a new campground</h1>
-		<div style="width: 100%; margin:25px auto;">
-			<form method="POST" action="/admin/campgrounds">
+		<h2>Creat a new Blog</h2>
+		<div class="col-md-12">
+			<form method="POST" action="/admin/campgrounds" enctype="multipart/form-data">
+        <div class="form_left_container">
 				<div class="form-group">
-				 <input type="text" class="form-control" name="camp_name" placeholder="camp name">
+				 <input type="text" class="form-control" name="camp_name" placeholder="blog name">
 				</div>
 				<div class="form-group">
-				 <input type="text" class="form-control" name="camp_image" placeholder="camp image link">
-				</div>
-				<div class="form-group">
-				 <input type="text" class="form-control" name="camp_img_alt" placeholder="camp image alt tag">
+				 <input type="text" class="form-control" name="camp_img_alt" placeholder="blog banner image alt tag">
 				</div>
 				<div class="form-group">
 				  <textarea id="edit" name="camp_description"></textarea>
 				</div>
+
          <div class="form-group">
+          <select name="camp_activity">
+            <option selected value="active">Active</option>
+            <option value="inactive">Inactive</option>
+          </select>
+        </div>
+
+        </div>
+
+            <div class="form_right_container">
+          <div class="input_type_file_container"><label for="input_type_file" class="image_upload_container"><img src="https://image.flaticon.com/icons/svg/149/149145.svg"><br/>Upload Banner</label>
+         <input type="file" class="input_type_file" name="photo" id="input_type_file" placeholder="camp image link">
+        </div>
+         <div class="form-group admin_blog_type_container">
+            <p>Organization</p>
+            <div class="admin_blog_ogganisation">
           <select name="camp_blogtype">
             <option selected value="Health & fintness">Health & fintness</option>
             <option value="Travel">Travel</option>
@@ -29,18 +43,19 @@
             <option value="Business">Business</option>
           </select>
         </div>
-        <div class="form-group">
-          <select name="camp_activity">
-            <option selected value="active">Active</option>
-            <option value="inactive">Inactive</option>
-          </select>
-        </div>
-				<div class="form-group">
-				 <button class="btn btn-lg btn-primary btn-block" type="submit">Add new campground</button>	
-			    </div>
-			</form>
-			<a href="/admin">go back</a>	
+      </div>
+
+      </div>
+
+          <div class="form-group">
+         <button class="btn btn-lg btn-primary btn-block" type="submit">Add new blog</button> 
+          </div>
+
+      </form>
+
+						<a href="/admin" class="btn btn-xs btn-danger">go back</a>	
 		</div>
+
 	</div>
 </div>
 <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/froala-editor@3.0.5/js/froala_editor.pkgd.min.js'></script>
