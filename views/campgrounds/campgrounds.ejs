@@ -125,13 +125,14 @@
 
 <%if(filter_value.filter_value=='All'){%>
 		<div class="templete_container">
+			<a href="/campgrounds/<%=campground._id%>">
 			<div class="thumbnail">
 				<div class="templete_image_container">
 				<img src="<%= campground.image %>" alt="<%=campground.alt%>">
 				</div>
 				<div class="templete_descrip_container">
 				<div class="blogtype_name_for_templeate">
-					 <p><a href="/campgrounds/<%=campground._id%>"><%= campground.blogtype %></a></p>
+					 <p><%= campground.blogtype %></p>
 				</div>
 				<div class="caption">
 			 <h4><%= campground.name %></h4>
@@ -140,7 +141,7 @@
 					 <p><%- campground.description.substr(0, 100) %>....</p>
 				</div>
 				</div>
-			</div>
+			</div></a>
 		</div>
 <%}%>
 
