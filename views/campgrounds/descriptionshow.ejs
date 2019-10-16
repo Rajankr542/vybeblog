@@ -40,11 +40,6 @@
           </div>
         </header>
 </div>
-<div class="des_page row header_banner">
-	<img class="des_page img-responsive" src="<%=campgrounds.image%>" alt="<%=campgrounds.alt%>">
-</div>
-
-
 
 <div class="des_page container">
 	<div class="container_for_blog_message">
@@ -68,11 +63,19 @@
 				<p>10 Sep 2019</p>
 			</div>	
 			</div>
-			
-			<div class="des_page blog-message"><%-campgrounds.description%></div>
 		</div>		
 	</div>
+</div></div></div>
 
+		<div class="des_page row header_banner">
+	<img class="des_page img-responsive" src="<%=campgrounds.image%>" alt="<%=campgrounds.alt%>">
+</div>
+		
+<div class="des_page container">
+	<div class="container_for_blog_message">
+<div class="des_page row">
+
+		<div class="des_page blog-message"><%-campgrounds.description%></div>
 <!-- 	<div class="des_page well">
 		<%campgrounds.comments.forEach(function(comments){%>
 		<div class="des_page row">

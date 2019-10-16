@@ -2,16 +2,16 @@
 <div class="row_banner_section slideshow-container">
 	<% campgrounds.forEach(function(campground){ %>
 	<% if(campground.activity_status=='active'){%>
-			<div class="banner_section mySlides fade">
+			<div class="banner_section mySlides">
 				<div class="banner_img">
 				<img src="<%= campground.image %>" alt="<%=campground.alt%>">
 				</div>
 				<div class="name_of_camp">
 					<div class="blogtype_name">
-					 <p><a href="/campgrounds/<%=campground._id%>"><%= campground.blogtype %></a></p>
+					 <p><a href="/blogs/<%=campground._id%>"><%= campground.blogtype %></a></p>
 					 </div>
 					 <div class="blog_title">
-					 <p><a href="/campgrounds/<%=campground._id%>"><h4><%= campground.name %></h4></a></p>
+					 <p><a href="/blogs/<%=campground._id%>"><h4><%= campground.name %></h4></a></p>
 					</div>
 					<div class="description_sec">
 					 <p><%-campground.description.substr(0, 100) %>....</p>
@@ -36,7 +36,7 @@
 			    </button>
 
 
-				<form method="post" action="/campgrounds/filter_value/<%Filter_value.forEach(function(filter_value){%><%=filter_value._id%>?_method=PUT" class="filter_form_true dropdown-content_bar">
+				<form method="post" action="/blogs/filter_value/<%Filter_value.forEach(function(filter_value){%><%=filter_value._id%>?_method=PUT" class="filter_form_true dropdown-content_bar">
 								
 								<div class="filter_listing_element <%if(filter_value.filter_value=='All'){%>live<%}%>">
 							<label for="All">All</label>
@@ -103,13 +103,14 @@
 <%if(filter_value.filter_value!='All'){%>
 	<% if(campground.blogtype==filter_value.filter_value){%>
 		<div class="templete_container">
+			<a href="/blogs/<%=campground._id%>">
 			<div class="thumbnail">
 				<div class="templete_image_container">
 				<img src="<%= campground.image %>" alt="<%=campground.alt%>">
 				</div>
 				<div class="templete_descrip_container">
 				<div class="blogtype_name_for_templeate">
-					 <p><a href="/campgrounds/<%=campground._id%>"><%= campground.blogtype %></a></p>
+					 <p><%= campground.blogtype %></p>
 				</div>
 				<div class="caption">
 			 <h4><%= campground.name %></h4>
@@ -118,14 +119,14 @@
 					 <p><%- campground.description.substr(0, 100) %>....</p>
 				</div>
 				</div>
-			</div>
+			</div></a>
 		</div>
 <%}%>
 <%}%>
 
 <%if(filter_value.filter_value=='All'){%>
 		<div class="templete_container">
-			<a href="/campgrounds/<%=campground._id%>">
+			<a href="/blogs/<%=campground._id%>">
 			<div class="thumbnail">
 				<div class="templete_image_container">
 				<img src="<%= campground.image %>" alt="<%=campground.alt%>">

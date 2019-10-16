@@ -6,7 +6,7 @@ var passport       =require("passport");
 
 
 
-router.get("/campgrounds",function(req,res){
+router.get("/blogs",function(req,res){
 	Campground.find({},function(err,allcampgrounds){
 		if(err){
 			console.log(err);
@@ -26,7 +26,7 @@ router.get("/campgrounds",function(req,res){
 
 
 
-router.get("/campgrounds/:id",function(req,res){
+router.get("/blogs/:id",function(req,res){
 	Campground.findById(req.params.id).populate("comments").exec(function(err, foundcampground){
 		if(err){
 			console.log(err);
@@ -36,14 +36,14 @@ router.get("/campgrounds/:id",function(req,res){
 	});
 });
 
-router.put("/campgrounds/filter_value/:id",function(req,res){
+router.put("/blogs/filter_value/:id",function(req,res){
   var filter_value=req.body.filter_value;
   var filter_value={filter_value:filter_value};
   Filter_value.findByIdAndUpdate(req.params.id,filter_value,function (err){
     if(err){
       console.log(err);
     }else{
-      res.redirect("/campgrounds#row filter_listing_container");
+      res.redirect("/blogs#row filter_listing_container");
     }
   });
   

@@ -76,7 +76,7 @@ router.post("/signup",function(req,res){
 			return res.render("register");
 		}
 		passport.authenticate("local")(req,res ,function(){
-			res.redirect("/campgrounds");
+			res.redirect("/blogs");
 		});
 	});
 });
@@ -93,7 +93,7 @@ failureRedirect:"/login"
 
 router.get("/logout",function(req,res){
 	req.logout();
-	res.redirect("/campgrounds");
+	res.redirect("/blogs");
 });
 
 function isLoggedIn(req,res,next){
