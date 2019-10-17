@@ -100,18 +100,25 @@
 	<div class="labled_message_for_comment">
 		<p>Your email address will not be published.Required fields are marked*</p>
 	</div>
- <form  method="POST" action="/blogs/<%=campgrounds._id%>/comments">
+ <form  method="POST" name="comment_form" action="/blogs/<%=campgrounds._id%>/comments">
 	<div class="text_area_container">
-		<textarea rows="5" cols="100" name="comment[text]" id="textarea_comment" class="textarea_comment" placeholder="Comment*"></textarea>  
+		<textarea rows="5" cols="100" name="comment[text]" id="textarea_comment" class="textarea_comment" placeholder="Comment*" required></textarea>  
 	</div>
 	<div class="input_comment_container_parent">
 	<div class="input_comment_container">
-		<input type="text" name="comment[author]" class="input_commet" placeholder="Name*">
+		<input type="text" name="comment[author]" class="input_commet" placeholder="Name*" required>
 	</div>
 	<div class="input_comment_container">
-		<input type="text" name="comment[email]" class="input_commet" placeholder="Email*">
+		<input type="email" name="comment[email]" class="input_commet" placeholder="Email*" required>
+	</div>
+<div class="input_comment_container" style="display: none;">
+		<input type="text" name="comment[date]" class="input_commet" value="<% 
+const months = ["January", "February", "March","April", "May", "June", "July", "August", "September", "October", "November", "December"];
+let current_datetime = new Date()
+let formatted_date =months[current_datetime.getMonth()] + " " +current_datetime.getDate()  + "," + current_datetime.getFullYear()%><%=formatted_date%>" required>
 	</div>
 	</div>
+
 	<div class="comment_submit_button_container">
 		<button class="comment_submit_button" type="submit">submit</button>
 	</div>
@@ -125,17 +132,24 @@
 <hr>
 
 
-	<div class="des_page well">
+<div class="des_page_comment_container">
+	<h2 class="h3"><%var x=campgrounds.comments.length;%><%=x%> Comment</h2>
 		<%campgrounds.comments.forEach(function(comments){%>
-		<div class="des_page row">
-			<div class="des_page col-md-12">
-				<strong><%=comments.author%></strong>
-				<span class="des_page pull-right">10 days ago..</span>
-				<p><%=comments.text%></p>
-			</div>
-		</div>
-		<%}); %>
-	</div>
+<div id="comments">
+<ul class="comments">
+<li id="user-icon-box" class="comment">
+<div class="comment__meta">
+  <span class="comment__meta-name"><%=comments.author%></span>
+  <span class="comment__meta-time"><%=comments.date%></span>
+</div>
+<div class="comment__content rte">
+ <p><%=comments.text%></p>
+</div>
+</li>
+</ul>
+</div>
+<%}); %>
+</div>
 
 
 
@@ -145,33 +159,35 @@
 </div>
 
 <div class="row des_page_des_sec">
-<% for(i=0 ;i<=1;i++){%>
+	<%var blogtype=campgrounds.blogtype	;%>
+<% peopleread.forEach(function(peopleread){%>
+<%if(peopleread.blogtype==blogtype){%>
 <div class="col-md-6">
 <div class="des_sec temp_container">
-			<a href="/blogs/<%=peopleread[i]._id%>">
+			<a href="/blogs/<%=peopleread._id%>">
 			<div class="thumbnail">
 				<div class="des_sec templete_image_container">
-				<img src="<%= peopleread[i].image %>" alt="<%=peopleread[i].alt%>">
+				<img src="<%= peopleread.image %>" alt="<%=peopleread.alt%>">
 				</div>
 				<div class="des_sec templete_descrip_container">
 				<div class="des_sec blogtype_name_for_templeate">
-					 <p><%= peopleread[i].blogtype %></p>
+					 <p><%= peopleread.blogtype %></p>
 				</div>
 				<div class="des_sec caption">
-			 <h4><%= peopleread[i].name %></h4>
+			 <h4><%= peopleread.name %></h4>
 			    </div>
 			    <div class="des_sec description_sec">
-					 <p><%- peopleread[i].description.substr(0, 100) %>....</p>
+					 <p><%- peopleread.description.substr(0, 100) %>....</p>
 				</div>
 				</div>
 			</div></a>
 		</div>
 </div>
-<%};%>
+<%}%>
+
+<%});%>
 </div>
 
-
 </div>
-
 
 <% include ../partial/footer %>

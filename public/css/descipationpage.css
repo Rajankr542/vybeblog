@@ -8,6 +8,27 @@ hr {
     font-weight: 700;
     font-family: 'Quicksand', sans-serif;
 }
+span.comment__meta-name {
+    font-weight: 400;
+    text-transform: capitalize;
+    color: #414141;
+    margin: 0;
+    display: block;
+}
+li#user-icon-box::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 42px;
+    height: 42px;
+    background: url('../images/user-icon.png') no-repeat top center;
+}
+ul.comments {
+    padding-left: 60px;
+    position: relative;
+    font-family: 'Quicksand', sans-serif;
+}
 
 .row.des_page_des_sec {
     padding-top: 80px;
@@ -31,7 +52,7 @@ hr {
 .des_page.container {
     max-width: 1269px;
     width: 100%;
-    padding-top: 90px;
+    padding-top: 25px;
     padding-bottom: 90px;
 }
 
@@ -41,7 +62,17 @@ hr {
     margin: 0 auto;
 }
 
+.row.des_page_des_sec .col-md-6 {
+    display: none;
+}
 
+.row.des_page_des_sec .col-md-6:nth-child(1) {
+    display: block;
+}
+
+.row.des_page_des_sec .col-md-6:nth-child(2) {
+    display: block;
+}
 .des_page.blog-message {
     padding: 30px 0px 30px;
     font-family: 'Quicksand', sans-serif;
@@ -50,6 +81,17 @@ hr {
     line-height: 1.7;
 }
 
+
+.des_page_comment_container {
+    max-width: 856px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+div#comments {
+    padding: 10px 0;
+}
 
 
 .des_page.row.header_banner {
@@ -67,7 +109,7 @@ hr {
 .des_page.blog-type {
     font-size: 18px;
     font-family: 'Quicksand', sans-serif;
-    padding-bottom: 40px;
+    padding-bottom: 25px;
     color: #f98e77;
 }
 
@@ -238,6 +280,24 @@ p.des_sec_page_quate {
 .des_page.blog-message p strong {
     color: #00000073;
     font-weight: 700;
+}
+
+span.comment__meta-name {
+    color: #000;
+    font-size: 18px;
+}
+
+span.comment__meta-time {font-size: 12px;font-weight: 600;color: #00000091;text-transform: capitalize;display: inline-block;padding: 8px 0;}
+.comment__content.rte {
+    padding: 5px  0px;
+    font-family: 'Quicksand', sans-serif;
+    color: #00000082;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.people_also_read_container {
+    padding-top: 40px;
 }
 
 @media all and (max-width: 1024px){
