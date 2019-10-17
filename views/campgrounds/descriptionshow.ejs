@@ -4,6 +4,8 @@
 	<title>.::VYBE::.</title>
    <!-- <meta name="viewport" content="width=device-width, initial-scale=0.8"> -->
    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=DM+Serif+Text&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js" type="text/javascript"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -131,6 +133,38 @@
 
 </div>
 
+<hr>
+
+<div class="people_also_read_container">
+	<div class="people_also_read_message"><p>People also read</p></div>
+
+</div>
+
+<div class="row des_page_des_sec">
+<% for(i=0 ;i<=1;i++){%>
+<div class="col-md-6">
+<div class="des_sec temp_container">
+			<a href="/blogs/<%=peopleread[i]._id%>">
+			<div class="thumbnail">
+				<div class="des_sec templete_image_container">
+				<img src="<%= peopleread[i].image %>" alt="<%=peopleread[i].alt%>">
+				</div>
+				<div class="des_sec templete_descrip_container">
+				<div class="des_sec blogtype_name_for_templeate">
+					 <p><%= peopleread[i].blogtype %></p>
+				</div>
+				<div class="des_sec caption">
+			 <h4><%= peopleread[i].name %></h4>
+			    </div>
+			    <div class="des_sec description_sec">
+					 <p><%- peopleread[i].description.substr(0, 100) %>....</p>
+				</div>
+				</div>
+			</div></a>
+		</div>
+</div>
+<%};%>
+</div>
 
 
 </div>

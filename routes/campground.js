@@ -31,7 +31,15 @@ router.get("/blogs/:id",function(req,res){
 		if(err){
 			console.log(err);
 		}else{
-			res.render("campgrounds/descriptionshow",{campgrounds:foundcampground});
+	Campground.find({},function(err,allcampgrounds){
+		if(err){
+			console.log(err);
+		}
+		else{
+			var allcampgrounds=allcampgrounds.reverse();
+			res.render("campgrounds/descriptionshow",{campgrounds:foundcampground,peopleread:allcampgrounds});
+		}
+	});
 		}
 	});
 });

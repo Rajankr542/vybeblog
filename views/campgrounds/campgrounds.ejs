@@ -1,25 +1,25 @@
 <% include ../partial/header %>
 <div class="row_banner_section slideshow-container">
-	<% campgrounds.forEach(function(campground){ %>
-	<% if(campground.activity_status=='active'){%>
+	<% for(i=0;i<=2;i++){ %>
+	<% if(campgrounds[i].activity_status=='active'){%>
 			<div class="banner_section mySlides">
 				<div class="banner_img">
-				<img src="<%= campground.image %>" alt="<%=campground.alt%>">
+				<img src="<%= campgrounds[i].image %>" alt="<%=campgrounds[i].alt%>">
 				</div>
 				<div class="name_of_camp">
 					<div class="blogtype_name">
-					 <p><a href="/blogs/<%=campground._id%>"><%= campground.blogtype %></a></p>
+					 <p><a href="/blogs/<%=campgrounds[i]._id%>"><%= campgrounds[i].blogtype %></a></p>
 					 </div>
 					 <div class="blog_title">
-					 <p><a href="/blogs/<%=campground._id%>"><h4><%= campground.name %></h4></a></p>
+					 <p><a href="/blogs/<%=campgrounds[i]._id%>"><h4><%= campgrounds[i].name %></h4></a></p>
 					</div>
 					<div class="description_sec">
-					 <p><%-campground.description.substr(0, 100) %>....</p>
+					 <p><%-campgrounds[i].description.substr(0, 100) %>....</p>
 					 </div>
 			    </div>
 			</div>
 			<%}%>
-	<% }); %>
+	<% }; %>
 	<div class="dot_class">
 	  <span class="dot" ></span> 
 	  <span class="dot" ></span> 

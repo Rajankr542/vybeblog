@@ -1,5 +1,33 @@
-
+hr {
+    border: 1px solid #eee;
+}
 /*Description page*/
+.people_also_read_message p {
+    text-align: center;
+    font-size: 40px;
+    font-weight: 700;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.row.des_page_des_sec {
+    padding-top: 80px;
+}
+.des_sec.caption {
+    font-size: 28px;
+    font-family: 'DM Serif Text', serif;
+    text-align: left;
+    line-height: 1;
+    font-weight: 500;
+    padding: 0;
+    color: #222222;
+}
+.des_sec.description_sec {
+    font-size: 16px;
+}
+.des_sec.temp_container {
+    width: 90%;
+    margin: 0 auto;
+}
 .des_page.container {
     max-width: 1269px;
     width: 100%;
@@ -94,6 +122,7 @@ button.comment_submit_button:hover {
 }
 .comment_form_container {
   font-family: 'Quicksand', sans-serif;
+  padding-bottom: 70px;
 }
 
 .leave_message {

@@ -3511,9 +3511,11 @@ input#minMaxExample {
 
 .banner_img {
     text-align: center;
+    max-width: 2000px;
     width: 100%;
     padding-left: 50px;
     padding-right: 50px;
+    margin: 0 auto;
 }
 
 .name_of_camp {
@@ -3525,12 +3527,16 @@ input#minMaxExample {
     height: 80%;
     width: 30%;
     padding: 50px;
+    max-height: 600px;
 }
 
 .banner_section {
     position: relative;
+    max-width: 2000px;
+    margin: 0 auto;
 }
 .blogtype_name {
+  font-size: 15px;
     font-family: 'Quicksand', sans-serif;
     margin-bottom: 50px;
     font-weight: 600;
@@ -3552,7 +3558,7 @@ input#minMaxExample {
     opacity: 0.9;
 }
 
-.mySlides {display: none}
+.mySlides {display: none;}
 
 .slideshow-container {
   position: relative;
@@ -3669,6 +3675,7 @@ input[name=filter_value] {
 
 .banner_img img {
     width:100%;
+    max-width: 2000px;
 }
 
 
@@ -3806,20 +3813,176 @@ input[name=filter_value] {
 }
 .input_comment_container:nth-child(2) { padding: 0px;padding-left: 10px;}
 
-@media all and (max-width: 3000px){
+.form_left_container {
+    float: left;
+    width: 60%;
+}
+
+.form_right_container {
+  padding: 0px 12px;
+  float: right;
+  width: 40%;
+}
+
+.input_type_file_container{
+  background-color: grey;
+  border-radius: 10px;
+    position: relative;
+}
+input#input_type_file {
+    height: 220px;
+    width: 100%;
+    z-index: 111;
+    opacity: 0;
+}
+label.image_upload_container {
+    position: absolute;
+    height: 220px;
+    width: 100%;
+    text-align: center;
+    padding-top: 70px;
+}
+
+label.image_upload_container img{
+   height: 50px;
+}
+
+.form-group.admin_blog_type_container {
+    height: 200px;
+    margin-top: 20px;
+    padding: 20px;
+    width: 100%;
+    background: #1d1d1d1a;
+    border-radius: 10px;
+}
+
+.form-group.admin_blog_type_container p {
+    font-size: 18px;
+    padding-bottom: 10px;
+    font-weight: 800;
+}
+
+
+.templete_image_container {
+    overflow: hidden;   
+}
+.templete_image_container img{
+   transition: .4s ease-out;
+}  
+
+.templete_image_container img:hover {
+    transform: scale(1.08);
+}
+
+.filter_listing_element:hover {
+    color: #f98e77;
+    cursor: -webkit-pointer;
+    cursor: pointer;
+    transition: .5s;
+}
+.filter_listing_element label:hover {
+    cursor: pointer;
+}
+.filter_listing_element::before {
+    width: 100%;
+    background: #f98e77;
+    height: 4px;
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 0;
+    z-index: 99;
+    transition: .5s;
+    opacity: 0;
+}
+
+.filter_listing_element.live::before {
+    width: 100%;
+    background: #f98e77;
+    height: 4px;
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 0;
+    z-index: 99;
+    opacity: 1;
+}
+
+.filter_listing_element:hover::before {
+    opacity: 1;
+}
+
+ .banner_section.myclass{
+  opacity: 0.5;
+  
+   -webkit-animation:.3s opacity 0.1s forwards linear;
+}
+
+@keyframes opacity{
+    0%{opacity:0.8;}
+    100%{opacity: 1;}
+}
+
+
+.banner_section.myclass .name_of_camp{
+
+transform: translateY(20px);
+-webkit-animation:.8s transform 0.2s forwards linear;
+
+
+}
+
+@keyframes transform{
+  0%{transform: translateY(20px);}
+    100%{transform: translateY(0px);}
+
+  }
+
+@media all and (max-width: 1921px){
+
+.name_of_camp {
+  font-size: 20px;
+}
+.blogtype_name p::before {
+    width: 70px;
+    background: #f98e77;
+    height: 2px;
+    position: absolute;
+    content: "";
+    left: 50px;
+    z-index: 99;
+    top: 80px;
+}
 .filter_listing_element {
     font-size: 24px;
 }
 
+
 }
-@media all and (max-width: 1650px){
+
+@media all and (max-width: 1890px){
+.filter_listing_element {
+    font-size: 22px;
+}
+
+}
+
+@media all and (max-width: 1789px){
+.filter_listing_element {
+    padding: 28px 20px;
+}
+
+}
+
+@media all and (max-width: 1690px){
 
 .filter_listing_element {
-    font-size: 18px;
+  font-size: 21px;
+    padding: 28px 18px;
 }
 
 }
-@media all and (max-width: 1550px){
+@media all and (max-width: 1600px){
 
 .filter_listing_element {
     font-size: 20px;
@@ -3827,25 +3990,31 @@ input[name=filter_value] {
 
 }
 
-@media all and (max-width: 1484px){
+@media all and (max-width: 1600px){
 
 .filter_listing_element {
-    font-size: 17px;
+    padding: 28px 15px;
 }
+
+}
+
+@media all and (max-width: 1494px){
+
+.filter_listing_element {
+    font-size: 18px;
+    padding: 28px 14px;
+}
+
 }
 
 @media all and (max-width: 1440px){
 
 .filter_listing_element {
-    padding: 28px 9px;
-}
-.filter_listing_element {
     padding: 28px 14px;
-    font-size: 19px;
 }
 }
 
-@media all and (max-width: 1300px){
+@media all and (max-width: 1370px){
 
   .blogtype_name {
   margin-bottom: 30px;
@@ -3873,15 +4042,14 @@ input[name=filter_value] {
 
 }
 
-@media all and (max-width: 1025px){
+@media all and (max-width: 1270px){
 .name_of_camp {
     padding: 30px;
 }
 .blogtype_name p::before {
-    left: 10%;
-   
+    left: 8%;
+    top: 12%;  
 }
-
 .blog_title {
     font-size: 30px;
 }
@@ -3892,8 +4060,8 @@ input[name=filter_value] {
 }
 
 .filter_listing_element {
-    font-size: 14px;
-    padding: 28px 4px;
+    font-size: 17px;
+    padding: 28px 8px;
 }
 
 .templete_container .caption {
@@ -3910,6 +4078,24 @@ input[name=filter_value] {
 
 }
 
+
+@media all and (max-width: 1024px){
+.name_of_camp {
+    padding: 30px;
+}
+.blogtype_name p::before {
+    left: 9%;
+    top: 14%;  
+}
+
+.filter_listing_element {
+    font-size: 15px;
+    padding: 28px 4px;
+}
+
+
+}
+
 @media all and (max-width: 980px){
 
 .blog_title {
@@ -3923,8 +4109,12 @@ input[name=filter_value] {
 
 }
 
-@media all and (max-width: 768px){
 
+@media all and (max-width: 900px){
+.blogtype_name p::before {
+    left: 7%;
+    top: 15%;  
+}
 .templete_container {
     width: 100% !important;
 }
@@ -4040,6 +4230,8 @@ input[name=filter_value] {
 
 }
 
+
+
 @media all and (max-width: 500px){
 
   .templete_image_container img {
@@ -4065,17 +4257,15 @@ input[name=filter_value] {
 }
 
 
-.name_of_camp {padding: 15px;width: 77%;}
+.name_of_camp {padding: 15px;width: 77%;height: 160px;}
 
 .blogtype_name {
     font-size: 12px;
 }
 .blogtype_name p::before {
-    left: 6%;
-   
+    left: 5%;
+    top: 30px;  
 }
-
-
 .blog_title {
     font-size: 15px;
 }
@@ -4152,193 +4342,34 @@ button.dropbtn_bar {
 
 .filter_listing_container {
     width: 100%;
-    padding: 25% 70px 6% 60px;
+    padding: 28% 70px 6% 60px;
+}
+.banner_img img {
+    height: 270px;
+    object-fit: cover;
+}
+
 }
 
 
+@media all and (min-width: 1921px){
+
+.name_of_camp {
+  font-size: 20px;
 }
-
-
-.form_left_container {
-    float: left;
-    width: 60%;
-}
-
-.form_right_container {
-  padding: 0px 12px;
-  float: right;
-  width: 40%;
-}
-
-.input_type_file_container{
-  background-color: grey;
-  border-radius: 10px;
-    position: relative;
-}
-input#input_type_file {
-    height: 220px;
-    width: 100%;
-    z-index: 111;
-    opacity: 0;
-}
-label.image_upload_container {
-    position: absolute;
-    height: 220px;
-    width: 100%;
-    text-align: center;
-    padding-top: 70px;
-}
-
-label.image_upload_container img{
-   height: 50px;
-}
-
-.form-group.admin_blog_type_container {
-    height: 200px;
-    margin-top: 20px;
-    padding: 20px;
-    width: 100%;
-    background: #1d1d1d1a;
-    border-radius: 10px;
-}
-
-.form-group.admin_blog_type_container p {
-    font-size: 18px;
-    padding-bottom: 10px;
-    font-weight: 800;
-}
-
-
-@media all and (min-width: 1700px){
-
-.blogtype_name {
-    font-size: 25px;
-}
-
-.blog_title {
-    font-size: 50px;
-}
-
-.description_sec {
-    font-size: 20px;
-}
-
-} 
-
-
-@media all and (min-width: 1800px){
-
 .blogtype_name p::before {
-width: 100px;
-left: 9%;
-top: 13%;
-}
-
-}
-
-@media all and (min-width: 2000px){
-
-.blogtype_name {
-    font-size: 25px;
-}
-
-.blog_title {
-    font-size: 60px;
-}
-
-.description_sec {
-    font-size: 22px;
-}
-
-
-
-}
-
-
-@media all and (min-width: 2200px){
-
-.blogtype_name p::before {
-width: 100px;
-left: 7%;
-top: 11%;
-}
-
-.blog_title {
-    font-size: 70px;
-}
-.description_sec {
-    font-size: 25px;
-}
-
-
-}
-
-.templete_image_container {
-    overflow: hidden;   
-}
-.templete_image_container img{
-   transition: .4s ease-out;
-}  
-
-.templete_image_container img:hover {
-    transform: scale(1.08);
-}
-
-.filter_listing_element:hover {
-    color: #f98e77;
-    transition: .5s;
-}
-.filter_listing_element::before {
-    width: 100%;
+    width: 70px;
     background: #f98e77;
-    height: 4px;
+    height: 2px;
     position: absolute;
     content: "";
-    left: 0;
-    bottom: 0;
+    left: 50px;
     z-index: 99;
-    transition: .5s;
-    opacity: 0;
+    top: 80px;
 }
 
-.filter_listing_element.live::before {
-    width: 100%;
-    background: #f98e77;
-    height: 4px;
-    position: absolute;
-    content: "";
-    left: 0;
-    bottom: 0;
-    z-index: 99;
-    opacity: 1;
+.filter_listing_element {
+    font-size: 24px;
 }
 
-.filter_listing_element:hover::before {
-    opacity: 1;
 }
-
- .banner_section.myclass{
-  opacity: 0.5;
-  
-   -webkit-animation:.3s opacity 0.1s forwards linear;
-}
-
-@keyframes opacity{
-    0%{opacity:0.8;}
-    100%{opacity: 1;}
-}
-
-
-.banner_section.myclass .name_of_camp{
-
-transform: translateY(20px);
--webkit-animation:.8s transform 0.2s forwards linear;
-
-
-}
-
-@keyframes transform{
-  0%{transform: translateY(20px);}
-    100%{transform: translateY(0px);}
-
-  }
