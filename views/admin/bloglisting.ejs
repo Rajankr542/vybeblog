@@ -9,33 +9,114 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link href='https://cdn.jsdelivr.net/npm/froala-editor@3.0.5/css/froala_editor.pkgd.min.css' rel='stylesheet' type='text/css' />
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
-	<link rel="stylesheet" type="text/css" href="/css/custom.css">
+	<link rel="stylesheet" type="text/css" href="/css/adminpage.css">
 </head>
 <body>
+<div class="logout_admin_button"><a class="btn btn-danger btn-large" href="/logout">Log out</a></div>
+
 <div class="container">
-<header class="jumbotron">
-		<div class="container"> 
-		<h1>Welcome to vybe blogs	!!</h1>
-		<p>
+
+<header>
+		<div class="container custom_admin_container"> 
+		<h2>Blog Post!</h2>
+		<p class="button_to_add_camp">
 		<a class="btn btn-primary btn-large" href="/admin/campgrounds/new">Add a new blog</a>
 		</p>
 		</div>
 </header>
-
-
-<div class="row text-center" style="display: flex; flex-wrap: wrap;">
-	<ol>
+<div class="filter_search_container">
+<select name="camp_blogtype" id="camp_blogtype" onchange="myFunctiontwo()">
+			<option disabled selected>filter by catogry</option>
+            <option value="Health & fintness">Health & fintness</option>
+            <option value="Travel">Travel</option>
+            <option value="Lifestyle $ Leisure">Lifestyle $ Leisure</option>
+            <option value="Music">Music</option>
+            <option value="Technologies">Technologies</option>
+            <option value="Design & Art">Design & Art</option>
+            <option value="Self Development">Self Development</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="Business">Business</option>
+          </select>
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Titles.." title="Type in a name">
+</div>
+<div class="admin_table_container">
+<table id="myTable">
+  <tr class="header">
+    <th style="width:60%;">Title</th>
+    <th style="width:15%;">Blog</th>
+    <th style="width:15%;">Author</th>
+    <th style="width:10%;">Date</th>
+ </tr>
 	<% campgrounds.forEach(function(campground){ %>
-		
-					<li>
-			 <P><a href="/admin/campgrounds/<%=campground._id%>/edit"><h4><%= campground.name %></h4></a></P>
-			</li>
-		
-	<% }); %>
-</ol>
-	</div>
+  <tr data-href="/admin/campgrounds/<%=campground._id%>/edit">
+    <td><div class="banner_admin_image"><img src="<%= campground.image %>"></div><span class="admin_title_name"><%= campground.name %></span><%if(campground.activity_status=='inactive'){%><span class="activity_status_admin_sec">Inactive<%}%></span></td>
+    <td><%= campground.blogtype %></td>
+    <td><%= campground.author %></td>
+    <td><%= campground.date %></td>
+  </tr>
+
+ 	<% }); %>
+</table>
+</div>
+
 
 
 </div>
+
+
+
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      	tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+
+function myFunctiontwo() {
+  var sel_input, sel_filter, sel_table, sel_tr, sel_td, sel_i, sel_txtValue;
+  sel_input = document.getElementById("camp_blogtype");
+  sel_filter = sel_input.value.toUpperCase();
+  sel_table = document.getElementById("myTable");
+  sel_tr = sel_table.getElementsByTagName("tr");
+  for (sel_i = 0; sel_i < sel_tr.length; sel_i++) {
+    sel_td = sel_tr[sel_i].getElementsByTagName("td")[1];
+    if (sel_td) {
+      sel_txtValue = sel_td.textContent || sel_td.innerText;
+      if (sel_txtValue.toUpperCase().indexOf(sel_filter) > -1) {
+        sel_tr[sel_i].style.display = "";
+      } else {
+        sel_tr[sel_i].style.display = "none";
+      }
+    }       
+  }
+}
+
+
+$("#A1").change(function() {
+    $("#B1").val($("#A1").val());
+});
+
+
+</script>
+<script>
+jQuery(document).ready(function($) {
+    $('*[data-href]').on('click', function() {
+        window.location = $(this).data("href");
+    });
+});
+</script>
 </body>
 </html>

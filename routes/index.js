@@ -93,7 +93,7 @@ failureRedirect:"/login"
 
 router.get("/logout",function(req,res){
 	req.logout();
-	res.redirect("/blogs");
+	res.redirect("/admin");
 });
 
 function isLoggedIn(req,res,next){

@@ -6,8 +6,7 @@ methodOverride 		=require("method-override"),
 Campground     		=require("./models/campgrounds"),
 Comment        		=require("./models/comment"),
 User 		   		=require("./models/user"), 
-Photo 		   		=require("./models/blogphoto"),                     
-Filter_value 		=require("./models/filter_values"),                     
+Photo 		   		=require("./models/blogphoto"),                                         
 seedDB         		=require("./seeds"),
 passport      	 	=require("passport"),
 LocalStrategy 		=require("passport-local"),
@@ -20,8 +19,8 @@ adminroutes			=require("./routes/admin");
 
 
 seedDB();
-// mongoose.connect('mongodb://localhost:27017/yelp_camp', {useNewUrlParser: true});
-mongoose.connect('mongodb+srv://rajankr5422:Rajan@9818@cluster0-jlil9.mongodb.net/Yelp_camp?retryWrites=true&w=majority', {useNewUrlParser: true});
+mongoose.connect('mongodb://localhost:27017/yelp_camp', {useNewUrlParser: true});
+// mongoose.connect('mongodb+srv://rajankr5422:Rajan@9818@cluster0-jlil9.mongodb.net/Yelp_camp?retryWrites=true&w=majority', {useNewUrlParser: true});
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine","ejs");
@@ -54,10 +53,10 @@ app.use(commentsroutes);
 app.use(adminroutes);
 
 
-// app.listen(3000,function(req,res){
-// 	console.log("This page serve on the port 3000!!");
-// });
-
-app.listen(process.env.PORT,process.env.IP,function(req,res){
-	console.log("This page serve on the port 3000!!!");
+app.listen(3000,function(req,res){
+	console.log("This page serve on the port 3000!!");
 });
+
+// app.listen(process.env.PORT,process.env.IP,function(req,res){
+// 	console.log("This page serve on the port 3000!!!");
+// });

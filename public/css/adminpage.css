@@ -1,0 +1,125 @@
+.container.custom_admin_container {
+    display: inline-block;
+    position: relative;
+}
+
+p.button_to_add_camp {position: absolute;right: 0;top: 0;}
+
+#myInput {
+  background-image: url('../images/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 80%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 16px;
+}
+
+#myTable th, #myTable td {
+  text-align: left;
+  padding: 12px;
+}
+
+#myTable th {
+    font-weight: 900;
+    font-size: 22px;
+}
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  background-color: #f1f1f1;
+}
+
+#camp_blogtype {
+    width: 19%;
+    padding: 12px 20px 12px 10px;
+    border: 1px solid #ddd;
+}
+
+span.activity_status_admin_sec {
+    background-color: #c7c1c1;
+    border-radius: 50%;
+    padding: 6px 25px;
+    color: #000;
+}
+
+.banner_admin_image {
+    width: 100px;
+    display: inline-block;
+    transform: translate(0px, 10px);
+}
+
+.banner_admin_image img {
+    width: 100%;
+    padding: 0 10px;
+}
+
+span.admin_title_name {
+    padding-right: 5%;
+}
+
+.admin_table_container {
+    padding: 30px 0px;
+}
+
+.author_container select {padding: 0px 20px;width: 145px;}
+
+.author_container {
+    padding-top: 20px;
+}
+
+.author_container label {
+    padding-right: 15px;
+}
+
+form#delete-form {display: inline-block;}
+
+.form_left_container.admin_update_banner {
+    position: absolute;
+    right: 13%;
+    width: 28%;
+    top: 10%;
+}
+
+.go_back_dele_con {
+    position: absolute;
+    right: 10%;
+    top: 5%;
+}
+
+.form-group.author_container.admin_edit label {
+    padding-right: 2px;
+}
+
+button.btn.btn-lg.btn-primary.btn-block {
+    width: 60%;
+}
+
+img#banner_preview {
+    width: 100%;
+    position: absolute;
+    top: 12px;
+    z-index: 1;
+}
+
+img.image_for_banner_update_preview {
+    width: 100%;
+    position: absolute;
+    top: 12px;
+}
+
+
+.logout_admin_button {
+    transform: translate(30px, 25px);
+    position: absolute;
+}

@@ -7,7 +7,7 @@ path           = require('path');
 
 
 
-router.get("/admin",function(req,res){
+router.get("/admin",isLoggedIn,function(req,res){
 	Campground.find({},function(err,allcampgrounds){
 		if(err){
 			console.log(err);
@@ -17,7 +17,7 @@ router.get("/admin",function(req,res){
 	});
 });
 
-router.get("/admin/campgrounds/new",function(req,res){
+router.get("/admin/campgrounds/new",isLoggedIn,function(req,res){
 	res.render("admin/new");
 });
 
@@ -52,7 +52,7 @@ var validateFile = function(file, cb ){
 }
 
 
-router.post('/admin/campgrounds',function(req,res){
+router.post('/admin/campgrounds',isLoggedIn,function(req,res){
  upload(req, res, function(err){
          if (err) {
              console.log(err);
@@ -69,13 +69,17 @@ router.post('/admin/campgrounds',function(req,res){
  var camp_description=req.body.camp_description;
  var camp_blogtype=req.body.camp_blogtype;
  var activity_status=req.body.camp_activity;
+ var camp_date=req.body.camp_date;
+ var camp_author=req.body.camp_author;
             var document = {
               name:camp_name,
               image:fullPath,
               alt:camp_alt,
               description:camp_description,
               blogtype:camp_blogtype,
-              activity_status:activity_status
+              activity_status:activity_status,
+              author:camp_author,
+              date:camp_date  
             };
   
  Campground.create(document,function(err,newlycreated){
@@ -90,7 +94,7 @@ router.post('/admin/campgrounds',function(req,res){
 });
 
 
-router.put('/admin/campgrounds/:id/banner',function(req,res){
+router.put('/admin/campgrounds/:id/banner',isLoggedIn,function(req,res){
  upload(req, res, function(err){
          if (err) {
              console.log(err);
@@ -109,7 +113,7 @@ Campground.findByIdAndUpdate(req.params.id,document,function(err,updateCampgroun
             if(err){ 
               throw err;
             } 
-            res.redirect("/admin");
+            res.redirect("back");
          });
       }
     }
@@ -117,7 +121,7 @@ Campground.findByIdAndUpdate(req.params.id,document,function(err,updateCampgroun
 });
 
 
-router.get("/admin/campgrounds/:id/edit",function(req,res){
+router.get("/admin/campgrounds/:id/edit",isLoggedIn,function(req,res){
   Campground.findById(req.params.id,function(err,Campground){
   	if(err){
   		console.log("error");
@@ -129,7 +133,7 @@ router.get("/admin/campgrounds/:id/edit",function(req,res){
 
 
 
-router.put("/admin/campgrounds/:id",function(req,res){
+router.put("/admin/campgrounds/:id",isLoggedIn,function(req,res){
 Campground.findByIdAndUpdate(req.params.id,req.body.campground,function(err,updateCampground){
 if(err){
 	console.log(err);
@@ -140,7 +144,7 @@ if(err){
 });
 
 
-router.delete("/admin/campgrounds/:id",function(req,res){
+router.delete("/admin/campgrounds/:id",isLoggedIn,function(req,res){
 Campground.findByIdAndDelete(req.params.id,function(err){
 if(err){
 	console.log(err);
@@ -149,6 +153,7 @@ if(err){
 }
 });
 });
+
 
 
 function isLoggedIn(req,res,next){

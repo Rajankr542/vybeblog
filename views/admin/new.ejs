@@ -1,7 +1,29 @@
-<%include ../partial/header%>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>.::VYBE::.</title>
+   <!-- <meta name="viewport" content="width=device-width, initial-scale=0.8"> -->
+   <meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js" type="text/javascript"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href='https://cdn.jsdelivr.net/npm/froala-editor@3.0.5/css/froala_editor.pkgd.min.css' rel='stylesheet' type='text/css' />
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <link rel="stylesheet" type="text/css" href="/css/adminpage.css">
+</head>
+<body>
+
+
 <div class="container">
 	<div class="row">
 		<h2>Creat a new Blog</h2>
+    <div class="banner_cat_container_admin">
+      <div class="go_back_dele_con">
+      <a href="/admin" class="btn btn-xs btn-danger">go back</a> 
+    </div>
+  </div>
+
+
 		<div class="col-md-12">
 			<form method="POST" action="/admin/campgrounds" enctype="multipart/form-data">
         <div class="form_left_container">
@@ -15,22 +37,18 @@
 				  <textarea id="edit" name="camp_description"></textarea>
 				</div>
 
-         <div class="form-group">
-          <select name="camp_activity">
-            <option selected value="active">Active</option>
-            <option value="inactive">Inactive</option>
-          </select>
         </div>
 
-        </div>
-
-            <div class="form_right_container">
+            <div class="form_right_container for_new_add_page">
           <div class="input_type_file_container"><label for="input_type_file" class="image_upload_container"><img src="https://image.flaticon.com/icons/svg/149/149145.svg"><br/>Upload Banner</label>
-         <input type="file" class="input_type_file" name="photo" id="input_type_file" placeholder="camp image link">
+         <input type="file" class="input_type_file" name="photo" id="input_type_file" placeholder="camp image link" required>
+         <img id="banner_preview" src="#" alt="Banner preview" / style="display: none;">
         </div>
+        
          <div class="form-group admin_blog_type_container">
             <p>Organization</p>
             <div class="admin_blog_ogganisation">
+          <label>Category</label>
           <select name="camp_blogtype">
             <option selected value="Health & fintness">Health & fintness</option>
             <option value="Travel">Travel</option>
@@ -43,6 +61,28 @@
             <option value="Business">Business</option>
           </select>
         </div>
+        <div class="author_container">
+          <label>Author</label>
+          <select name="camp_author">
+            <option selected value="Mark Galieo">Mark Galieo</option>
+          </select>
+        </div>
+
+          <div class="form-group author_container admin_edit">
+            <label>Visibility</label>
+            <select name="camp_activity">
+              <option selected value="active">Active</option>
+              <option value="inactive">Inactive</option>
+            </select>
+          </div>
+
+        <div class="input_date_container" style="display: none;">
+    <input type="text" name="camp_date" class="input_commet" value="<% 
+const months = ["Jan", "Feb", "Mar","Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+let current_datetime = new Date()
+let formatted_date =current_datetime.getDate() + " " + months[current_datetime.getMonth()] + " " + current_datetime.getFullYear()%><%=formatted_date%>" required>
+  </div>
+
       </div>
 
       </div>
@@ -53,7 +93,7 @@
 
       </form>
 
-						<a href="/admin" class="btn btn-xs btn-danger">go back</a>	
+						
 		</div>
 
 	</div>
@@ -105,4 +145,27 @@
     }
   })
 </script>
-<%include ../partial/footer%>
+
+<script>
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#banner_preview').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+    $("#banner_preview").css("display", "block");
+    $(".image_upload_container").css("color", "red");
+    
+
+}
+
+$("#input_type_file").change(function(){
+    readURL(this);
+});
+</script>
+</body>
+</html>

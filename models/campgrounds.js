@@ -12,6 +12,8 @@ var Campground = mongoose.model('Campground', {
 		}
 	],
 	blogtype:String,
+	author:String,
+	date:String,
 	activity_status:String 
 });
 module.exports =Campground;

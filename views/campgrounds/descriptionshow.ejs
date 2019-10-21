@@ -56,13 +56,13 @@
 			<div class="author_image_container">
 				<img src="/images/author-img.png">
 				<div class="autor_name_sec">
-					<p><b>Mark Galieo</b></p>
+					<p><b><%= campgrounds.author%></b></p>
 					<p>Vybeliving #232 Mission Street</p>
 				</div>
 			</div>
 			<div class="author_time_container">
 				<img src="/images/calander-img.png">
-				<p>10 Sep 2019</p>
+				<p><%= campgrounds.date%></p>
 			</div>	
 			</div>
 		</div>		
@@ -113,9 +113,9 @@
 	</div>
 <div class="input_comment_container" style="display: none;">
 		<input type="text" name="comment[date]" class="input_commet" value="<% 
-const months = ["January", "February", "March","April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const months = ["Jan", "Feb", "Mar","Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 let current_datetime = new Date()
-let formatted_date =months[current_datetime.getMonth()] + " " +current_datetime.getDate()  + "," + current_datetime.getFullYear()%><%=formatted_date%>" required>
+let formatted_date =current_datetime.getDate() + " " + months[current_datetime.getMonth()] + " " + current_datetime.getFullYear()%><%=formatted_date%>" required>
 	</div>
 	</div>
 
@@ -159,9 +159,8 @@ let formatted_date =months[current_datetime.getMonth()] + " " +current_datetime.
 </div>
 
 <div class="row des_page_des_sec">
-	<%var blogtype=campgrounds.blogtype	;%>
 <% peopleread.forEach(function(peopleread){%>
-<%if(peopleread.blogtype==blogtype){%>
+<%if(peopleread.blogtype==campgrounds.blogtype && JSON.stringify(peopleread._id)!= JSON.stringify(campgrounds._id)){%>
 <div class="col-md-6">
 <div class="des_sec temp_container">
 			<a href="/blogs/<%=peopleread._id%>">
@@ -183,6 +182,7 @@ let formatted_date =months[current_datetime.getMonth()] + " " +current_datetime.
 			</div></a>
 		</div>
 </div>
+
 <%}%>
 
 <%});%>

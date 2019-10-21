@@ -14,7 +14,7 @@
 					 <p><a href="/blogs/<%=campgrounds[i]._id%>"><h4><%= campgrounds[i].name %></h4></a></p>
 					</div>
 					<div class="description_sec">
-					 <p><%-campgrounds[i].description.substr(0, 100) %>....</p>
+					 <p><%=(campgrounds[i].description.replace(/<[^>]+>/g, '')).substr(0, 100) %>....</p>
 					 </div>
 			    </div>
 			</div>
@@ -36,73 +36,68 @@
 			    </button>
 
 
-				<form method="post" action="/blogs/filter_value/<%Filter_value.forEach(function(filter_value){%><%=filter_value._id%>?_method=PUT" class="filter_form_true dropdown-content_bar">
+				<form id="myBtnContainer" class="filter_form_true dropdown-content_bar">
 								
-								<div class="filter_listing_element <%if(filter_value.filter_value=='All'){%>live<%}%>">
+								<div class="filter_listing_element live">
 							<label for="All">All</label>
-							<input type="radio" name="filter_value" value="All" id="All" onchange="submit()">
+							<input type="radio" name="filter_value" value="All" id="All" onchange="filterSelection('all')">
 							</div>
  
-							<div class="filter_listing_element <%if(filter_value.filter_value=='Health & fintness'){%>live<%}%>">
+							<div class="filter_listing_element">
 							<label for="Health_&_fintness">Health & fintness</label>
-							<input type="radio" name="filter_value" value="Health & fintness" id="Health_&_fintness" onchange="submit()">
+							<input type="radio" name="filter_value" value="Health & fintness" id="Health_&_fintness" onchange="filterSelection('Health & fintness')">
 							</div>	
 
-							<div class="filter_listing_element <%if(filter_value.filter_value=='Travel'){%>live<%}%>">
+							<div class="filter_listing_element">
 							<label for="Travel">Travel</label>
-							<input type="radio" name="filter_value" value="Travel" id="Travel" onchange="submit()">
+							<input type="radio" name="filter_value" value="Travel" id="Travel" onchange="filterSelection('Travel')">
 							</div>
 
-							<div class="filter_listing_element <%if(filter_value.filter_value=='Lifestyle $ Leisure'){%>live<%}%>">
+							<div class="filter_listing_element">
 							<label for="Lifestyle_$_Leisure">Lifestyle $ Leisure</label>
-							<input type="radio" name="filter_value" value="Lifestyle $ Leisure" id="Lifestyle_$_Leisure" onchange="submit()">
+							<input type="radio" name="filter_value" value="Lifestyle $ Leisure" id="Lifestyle_$_Leisure" onchange="filterSelection('Lifestyle $ Leisure')">
 							</div>
 
-								<div class="filter_listing_element <%if(filter_value.filter_value=='Music'){%>live<%}%>">
+								<div class="filter_listing_element">
 							<label for="Music">Music</label>
-							<input type="radio" name="filter_value" value="Music" id="Music" onchange="submit()">
+							<input type="radio" name="filter_value" value="Music" id="Music" onchange="filterSelection('Music')">
 							</div>
 
-								<div class="filter_listing_element <%if(filter_value.filter_value=='Technologies'){%>live<%}%>">
+								<div class="filter_listing_element">
 							<label for="Technologies">Technologies</label>
-							<input type="radio" name="filter_value" value="Technologies" id="Technologies" onchange="submit()">
+							<input type="radio" name="filter_value" value="Technologies" id="Technologies" onchange="filterSelection('Technologies')">
 							</div>
 
-								<div class="filter_listing_element <%if(filter_value.filter_value=='Design & Art'){%>live<%}%>">
+								<div class="filter_listing_element">
 							<label for="Design_&_Art">Design & Art</label>
-							<input type="radio" name="filter_value" value="Design & Art" id="Design_&_Art" onchange="submit()">
+							<input type="radio" name="filter_value" value="Design & Art" id="Design_&_Art" onchange="filterSelection('Design & Art')">
 							</div>
 
-								<div class="filter_listing_element <%if(filter_value.filter_value=='Self Development'){%>live<%}%>">
+								<div class="filter_listing_element">
 							<label for="Self_Development">Self Development</label>
-							<input type="radio" name="filter_value" value="Self Development" id="Self_Development" onchange="submit()">
+							<input type="radio" name="filter_value" value="Self Development" id="Self_Development" onchange="filterSelection('Self Development')">
 							</div>
 
-								<div class="filter_listing_element <%if(filter_value.filter_value=='Entertainment'){%>live<%}%>">
+								<div class="filter_listing_element">
 							<label for="Entertainment">Entertainment</label>
-							<input type="radio" name="filter_value" value="Entertainment" id="Entertainment" onchange="submit()">
+							<input type="radio" name="filter_value" value="Entertainment" id="Entertainment" onchange="filterSelection('Entertainment')">
 							</div>
 
-							<div class="filter_listing_element <%if(filter_value.filter_value=='Business'){%>live<%}%>">
+							<div class="filter_listing_element">
 							<label for="Business">Business</label>
-							<input type="radio" name="filter_value" value="Business" id="Business" onchange="submit()">
+							<input type="radio" name="filter_value" value="Business" id="Business" onchange="filterSelection('Business')">
 							</div>
-
-							<%});%>
 					</form>		
+
 		</div>	
 	</div>
 
 <div class="custom_container_for_templeate">
 <div class="row text-center">
-	
-	<% Filter_value.forEach(function(filter_value){ %>
+
 	<% campgrounds.forEach(function(campground){ %>
 	<% if(campground.activity_status=='active'){%>
-
-<%if(filter_value.filter_value!='All'){%>
-	<% if(campground.blogtype==filter_value.filter_value){%>
-		<div class="templete_container">
+		<div class="filterDiv <%= campground.blogtype %> templete_container">
 			<a href="/blogs/<%=campground._id%>">
 			<div class="thumbnail">
 				<div class="templete_image_container">
@@ -116,53 +111,69 @@
 			 <h4><%= campground.name %></h4>
 			    </div>
 			    <div class="description_sec">
-					 <p><%- campground.description.substr(0, 100) %>....</p>
+					 <p><%= (campground.description.replace(/<[^>]+>/g, '')).substr(0, 100) %>....</p>
 				</div>
 				</div>
 			</div></a>
 		</div>
 <%}%>
-<%}%>
-
-<%if(filter_value.filter_value=='All'){%>
-		<div class="templete_container">
-			<a href="/blogs/<%=campground._id%>">
-			<div class="thumbnail">
-				<div class="templete_image_container">
-				<img src="<%= campground.image %>" alt="<%=campground.alt%>">
-				</div>
-				<div class="templete_descrip_container">
-				<div class="blogtype_name_for_templeate">
-					 <p><%= campground.blogtype %></p>
-				</div>
-				<div class="caption">
-			 <h4><%= campground.name %></h4>
-			    </div>
-			    <div class="description_sec">
-					 <p><%- campground.description.substr(0, 100) %>....</p>
-				</div>
-				</div>
-			</div></a>
-		</div>
-<%}%>
-
-
-<%}%>
-	<% }); %>
 	<% }); %>
 
 	</div>
 </div>
 
 
+<script>
+
+	// .templete_container:nth-child(4n+3) .templete_image_container
+
+	
+
+	 $('.templete_container:visible').each(function() {
+        $(this).css('background', 'red');
+      })
 
 
-<script type="text/javascript">
-$(".filter_listing_element").on('click', function(){
-	$('.filter_form_true').submit();
-});
+filterSelection("all")
+function filterSelection(c) {
+  var x, i;
+  x = document.getElementsByClassName("filterDiv");
+  if (c == "all") c = "";
+  for (i = 0; i < x.length; i++) {
+    w3RemoveClass(x[i], "show");
+    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+  }
+}
 
+function w3AddClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+  }
+}
+
+function w3RemoveClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    while (arr1.indexOf(arr2[i]) > -1) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1);     
+    }
+  }
+  element.className = arr1.join(" ");
+}
+var btnContainer = document.getElementById("myBtnContainer");
+var btns = btnContainer.getElementsByClassName("filter_listing_element");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function(){
+    var current = document.getElementsByClassName("live");
+    current[0].className = current[0].className.replace(" live", "");
+    this.className += " live";
+  });
+}
 </script>
-
 
 <% include ../partial/footer %>

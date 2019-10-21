@@ -3630,6 +3630,10 @@ input#minMaxExample {
 .fade:not(.show) {
      opacity: 1 !important; 
 }
+
+.filter_listing_element label {
+    padding: 28px 0;
+}
 /* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
   .prev, .next,.text {font-size: 11px}
@@ -3651,7 +3655,7 @@ input[name=filter_value] {
     position: relative;
     display: inline-block;
     font-size: 18;
-    padding: 28px 25px;
+    padding: 0px 25px;
     font-family: 'quicksand', sans-serif;
     font-weight: 700;
 }
@@ -3819,9 +3823,11 @@ input[name=filter_value] {
 }
 
 .form_right_container {
-  padding: 0px 12px;
-  float: right;
+  padding: 0px 22px;
   width: 40%;
+  position: absolute;
+  right: 0;
+  top: 240px;
 }
 
 .input_type_file_container{
@@ -3841,6 +3847,7 @@ label.image_upload_container {
     width: 100%;
     text-align: center;
     padding-top: 70px;
+    z-index: 11;
 }
 
 label.image_upload_container img{
@@ -3969,7 +3976,7 @@ transform: translateY(20px);
 
 @media all and (max-width: 1789px){
 .filter_listing_element {
-    padding: 28px 20px;
+    padding: 0px 20px;
 }
 
 }
@@ -3978,7 +3985,7 @@ transform: translateY(20px);
 
 .filter_listing_element {
   font-size: 21px;
-    padding: 28px 18px;
+    padding: 0px 18px;
 }
 
 }
@@ -3993,7 +4000,7 @@ transform: translateY(20px);
 @media all and (max-width: 1600px){
 
 .filter_listing_element {
-    padding: 28px 15px;
+    padding: 0px 15px;
 }
 
 }
@@ -4002,7 +4009,7 @@ transform: translateY(20px);
 
 .filter_listing_element {
     font-size: 18px;
-    padding: 28px 14px;
+    padding: 0px 14px;
 }
 
 }
@@ -4010,7 +4017,7 @@ transform: translateY(20px);
 @media all and (max-width: 1440px){
 
 .filter_listing_element {
-    padding: 28px 14px;
+    padding: 0px 14px;
 }
 }
 
@@ -4036,7 +4043,7 @@ transform: translateY(20px);
     margin-top: 25px;
 }
 .filter_listing_element {
-    padding: 28px 9px;
+    padding: 0px 9px;
     font-size: 18px;
 }
 
@@ -4061,7 +4068,7 @@ transform: translateY(20px);
 
 .filter_listing_element {
     font-size: 17px;
-    padding: 28px 8px;
+    padding: 0px 8px;
 }
 
 .templete_container .caption {
@@ -4090,7 +4097,7 @@ transform: translateY(20px);
 
 .filter_listing_element {
     font-size: 15px;
-    padding: 28px 4px;
+    padding: 0px 4px;
 }
 
 
@@ -4103,7 +4110,7 @@ transform: translateY(20px);
 }
 
 .filter_listing_element {
-   padding: 28px 4px;
+   padding: 0px 4px;
 }
 
 
@@ -4176,12 +4183,15 @@ transform: translateY(20px);
 .dropdown-content_bar .filter_listing_element {
   float: none;
   color: black;
-  padding: 12px 16px;
+  padding: 0px 16px;
   text-decoration: none;
   display: block;
   text-align: left;
 }
 
+.dropdown-content_bar .filter_listing_element label{
+  padding: 12px 0px;
+}
 
 .dropdown_bar:hover .dropdown-content_bar {
   display: block;
@@ -4372,4 +4382,17 @@ button.dropbtn_bar {
     font-size: 24px;
 }
 
+}
+
+
+.form_right_container.for_new_add_page {
+    top: 0%;
+}
+
+.filterDiv {
+  display: none;
+}
+
+.show_filter {
+  display: block;
 }
