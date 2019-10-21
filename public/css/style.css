@@ -4336,6 +4336,8 @@ select.btncontainer {
   font-family: "Quicksand";
   width: 100%;
   padding: 10px;
+  background: #fff;
+  -webkit-appearance: none;
 }
 
 .dropdown_bar {
