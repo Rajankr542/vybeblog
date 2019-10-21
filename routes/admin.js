@@ -1,6 +1,7 @@
 var express =require("express");
 var router =express.Router();
 var Campground=require("../models/campgrounds");
+var Comment=require("../models/comment");
 var passport       =require("passport"),
 multer         = require('multer'),
 path           = require('path');
@@ -122,10 +123,10 @@ Campground.findByIdAndUpdate(req.params.id,document,function(err,updateCampgroun
 
 
 router.get("/admin/campgrounds/:id/edit",isLoggedIn,function(req,res){
-  Campground.findById(req.params.id,function(err,Campground){
+  Campground.findById(req.params.id).populate("comments").exec(function(err, Campground){
   	if(err){
   		console.log("error");
-  	}else{
+  	}else{ 
   		res.render("admin/edit",{Campground:Campground});
   	}
   });
@@ -142,6 +143,29 @@ if(err){
 }
 });
 });
+
+
+router.put("/admin/comments/:id",isLoggedIn,function(req,res){
+Comment.findByIdAndUpdate(req.params.id,req.body.comment,function(err,updatedcomment){
+if(err){
+  console.log(err);
+}else{
+  res.redirect("back");
+}
+});
+});
+
+
+router.delete("/admin/comments/:id",isLoggedIn,function(req,res){
+Comment.findByIdAndDelete(req.params.id,function(err){
+if(err){
+  console.log(err);
+}else{
+  res.redirect("back");
+}
+});
+});
+
 
 
 router.delete("/admin/campgrounds/:id",isLoggedIn,function(req,res){

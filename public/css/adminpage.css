@@ -123,3 +123,35 @@ img.image_for_banner_update_preview {
     transform: translate(30px, 25px);
     position: absolute;
 }
+
+
+
+.form_right_container.commnent_container {top: 470px;}
+
+.form-group.admin_blog_type_container.admin_blog_comment_container {
+    height: -webkit-fill-available;
+}
+
+
+.form_right_container.commnent_container form#delete-form {
+    position:absolute;
+    left:150px;
+}
+
+.listing_of_comment {
+    padding: 10px 10px;
+}
+
+span.author_name_for_comment {
+    font-weight: bolder;
+    display: inline-block;
+    padding-top: 10px;
+}
+
+.author_commnet_message p {
+    font-weight: 400 !important;
+}
+span.author_date_for_comment {
+    padding: 50px;
+    font-size: 12px;
+}

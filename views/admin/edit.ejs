@@ -115,6 +115,36 @@
       </form>
       
 
+                  <div class="form_right_container commnent_container">
+                   <div class="form-group admin_blog_type_container admin_blog_comment_container">
+                    <p>Handle Comments</p>
+                    <%Campground.comments.forEach(function(comments){%>
+                    <div class="listing_of_comment">
+                      <form id="delete-form" action="/admin/comments/<%=comments._id%>?_method=DELETE" method="post">
+                      <button class="btn btn-danger btn-xs">delete</button></form>
+                    <form method="post" action="/admin/comments/<%=comments._id%>?_method=PUT">
+                      <div class="form_comment_input_container">
+                        <select name="comment[approval]" onchange="submit()">
+                          <option <%if(comments.approval=='approved'){%>
+                                selected
+                                <%}%> value="approved">approved</option>
+                              <option <% if(comments.approval=='spam'){%>
+                                selected
+                                <%}%> value="spam">spam</option>
+                            </select>
+                      </div>
+
+                    </form>
+                    <span class="author_name_for_comment"><%=comments.author%></span>
+                    <span class="author_date_for_comment"><%=comments.date%></span>
+                    <div class="author_commnet_message">
+                       <p><%=comments.text%></p>
+                    </div>
+                      </div>
+                  <%}); %>
+
+                  </div>
+                  </div>
           
     </div>
 

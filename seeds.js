@@ -112,7 +112,8 @@ function seedDB(){
                                 { author: "Rajan",
                                 text: "This place is great, but I wish there was internet",
                                 email:"Rajankumar@gmail.com",
-                                date:formatted_date
+                                date:formatted_date,
+                                approval:'approved'
                             }, function(err, comment){
                                 if(err){
                                     console.log(err);

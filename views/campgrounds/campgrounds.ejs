@@ -1,4 +1,6 @@
 <% include ../partial/header %>
+
+<div class="container">
 <div class="row_banner_section slideshow-container">
 	<% for(i=0;i<=2;i++){ %>
 	<% if(campgrounds[i].activity_status=='active'){%>
@@ -11,7 +13,7 @@
 					 <p><a href="/blogs/<%=campgrounds[i]._id%>"><%= campgrounds[i].blogtype %></a></p>
 					 </div>
 					 <div class="blog_title">
-					 <p><a href="/blogs/<%=campgrounds[i]._id%>"><h4><%= campgrounds[i].name %></h4></a></p>
+				 	 <p><a href="/blogs/<%=campgrounds[i]._id%>"><h4><%= campgrounds[i].name %></h4></a></p>
 					</div>
 					<div class="description_sec">
 					 <p><%=(campgrounds[i].description.replace(/<[^>]+>/g, '')).substr(0, 100) %>....</p>
@@ -26,6 +28,7 @@
 	  <span class="dot" ></span> 
 	</div>
 </div>
+
 
 
 
@@ -121,18 +124,32 @@
 
 	</div>
 </div>
-
+</div>
 
 <script>
 
-	// .templete_container:nth-child(4n+3) .templete_image_container
 
-	
+// if( $(".templete_image_container").hasClass('.show')){
 
-	 $('.templete_container:visible').each(function() {
-        $(this).css('background', 'red');
-      })
+// 	$(".templete_image_container").css("background","red");
 
+// }
+
+// $('.templete_container').each(function(){
+//     if($('.templete_container').hasClass('show')) {
+//         $('.templete_container').css("background","red");
+//     } 
+// });
+
+
+if($(".templete_container").hasClass("show")){
+
+
+}
+
+// if ($(".templete_image_container").hasClass('show')) {
+// 	$(".templete_image_container").css("background","red");
+// }
 
 filterSelection("all")
 function filterSelection(c) {
