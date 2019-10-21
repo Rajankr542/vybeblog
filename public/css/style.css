@@ -2697,6 +2697,10 @@ ul.second_list.table {
 .ui-datepicker table {  margin: 0 0 1em;
 }
 
+select.btncontainer {
+  display: none;
+}
+
 /* .ui-state-active, .ui-widget-content .ui-state-active{
   background: #b0d0d3;
 } */
@@ -3499,6 +3503,8 @@ input#minMaxExample {
   .grid-sizer,
   .grid-item {width: 33.333%;}
 
+ 
+
 }
 @media screen and (min-width:992px) {
   .grid-sizer,
@@ -4272,6 +4278,79 @@ transform: translateY(20px);
   .templete_image_container img {
     height: 270px;
 }
+
+ .dropdown_bar .dropbtn_bar {
+    display: none;
+}
+
+.des_page.row.header_banner img {
+  height: 220px;
+  object-fit: cover;
+}
+
+.des_page.row.header_banner img {
+  height: 280px;
+  object-fit: cover;
+}
+
+select.btncontainer {
+    display: block;
+    border: 1px solid #b7b7b7;
+    font-family: "quicksand";
+    padding: 10px;
+    width: 100%;
+    display: block;
+}
+
+form#myBtnContainer {
+    display: none;
+}
+
+.dropdown_bar {
+    float: none;
+}
+
+.banner_section.myclass .name_of_camp {
+  transform: none;
+  animation: none;
+}
+
+.author_time_container {
+  margin: 0 !important;
+}
+
+.author_image_container img {
+  vertical-align: top;
+}
+
+.filterDiv {
+  margin-bottom: 50px;
+}
+
+.autor_name_sec p b {
+  font-size: 13px !important;
+}
+
+select.btncontainer {
+  display: block;
+  font-family: "Quicksand";
+  width: 100%;
+  padding: 10px;
+}
+
+.dropdown_bar {
+  float: none;
+}
+
+.dropdown_bar .dropbtn_bar {
+  display: none;
+}
+
+.dropdown-content_bar {
+  display: none !important;
+}
+
+
 .dot_class {
     right: 20%;
     bottom: 30%;
@@ -4307,7 +4386,7 @@ transform: translateY(20px);
 }
 
 
-.name_of_camp {padding: 15px;width: 100%;height: 180px;left: 0;top: 100%;}
+.name_of_camp {padding: 15px;width: 100%;height: 180px;left: 0;top: 80%;}
 
 .blogtype_name {
     font-size: 12px;
@@ -4392,7 +4471,7 @@ button.dropbtn_bar {
 .filter_listing_container {
     width: 100%;
     padding: 0;
-    margin-top: 270px;
+    margin-top: 230px;
 }
 .banner_img img {
     height: 270px;
@@ -4419,6 +4498,23 @@ button.dropbtn_bar {
 }
 
 .filter_listing_element {
+    font-size: 24px;
+}
+
+}
+
+
+.form_right_container.for_new_add_page {
+    top: 0%;
+}
+
+.filterDiv {
+  display: none;
+}
+
+.show_filter {
+  display: block;
+}
     font-size: 24px;
 }
 

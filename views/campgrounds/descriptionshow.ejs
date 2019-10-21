@@ -117,10 +117,6 @@ const months = ["Jan", "Feb", "Mar","Apr", "May", "Jun", "Jul", "Aug", "Sep", "O
 let current_datetime = new Date()
 let formatted_date =current_datetime.getDate() + " " + months[current_datetime.getMonth()] + " " + current_datetime.getFullYear()%><%=formatted_date%>" required>
 	</div>
-	<div class="input_comment_container" style="display: none;">
-		<input type="text" name="comment[approval]" class="input_commet" value="spam" required>
-	</div>
-
 	</div>
 
 	<div class="comment_submit_button_container">
@@ -138,8 +134,7 @@ let formatted_date =current_datetime.getDate() + " " + months[current_datetime.g
 
 <div class="des_page_comment_container">
 	<h2 class="h3"><%var x=campgrounds.comments.length;%><%=x%> Comment</h2>
-			<%campgrounds.comments.forEach(function(comments){%>
-		<%if(comments.approval=='approved'){%>
+		<%campgrounds.comments.forEach(function(comments){%>
 <div id="comments">
 <ul class="comments">
 <li id="user-icon-box" class="comment">
@@ -153,7 +148,6 @@ let formatted_date =current_datetime.getDate() + " " + months[current_datetime.g
 </li>
 </ul>
 </div>
-<%} %>
 <%}); %>
 </div>
 
