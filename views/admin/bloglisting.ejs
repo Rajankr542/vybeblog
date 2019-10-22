@@ -49,7 +49,7 @@
  </tr>
 	<% campgrounds.forEach(function(campground){ %>
   <tr data-href="/admin/campgrounds/<%=campground._id%>/edit">
-    <td><div class="banner_admin_image"><img src="<%= campground.image %>"></div><span class="admin_title_name"><%= campground.name %></span><%if(campground.activity_status=='inactive'){%><span class="activity_status_admin_sec">Inactive<%}%></span></td>
+    <td><div class="banner_admin_image"><img src="<%= campground.image %>"></div><span class="admin_title_name"><%= campground.name.substr(0, 70) %></span><%if(campground.activity_status=='inactive'){%><span class="activity_status_admin_sec">Inactive<%}%></span></td>
     <td><%= campground.blogtype %></td>
     <td><%= campground.author %></td>
     <td><%= campground.date %></td>

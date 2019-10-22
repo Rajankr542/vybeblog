@@ -13,7 +13,7 @@
 					 <p><a href="/blogs/<%=campgrounds[i]._id%>"><%= campgrounds[i].blogtype %></a></p>
 					 </div>
 					 <div class="blog_title">
-				 	 <p><a href="/blogs/<%=campgrounds[i]._id%>"><h4><%= campgrounds[i].name %></h4></a></p>
+				 	 <p><a href="/blogs/<%=campgrounds[i]._id%>"><h4><%= campgrounds[i].name.substr(0, 70) %></h4></a></p>
 					</div>
 					<div class="description_sec">
 					 <p><%=(campgrounds[i].description.replace(/<[^>]+>/g, '')).substr(0, 100) %>....</p>
@@ -132,7 +132,7 @@
 					 <p><%= campground.blogtype %></p>
 				</div>
 				<div class="caption">
-			 <h4><%= campground.name %></h4>
+			 <h4><%= campground.name.substr(0, 70) %></h4>
 			    </div>
 			    <div class="description_sec">
 					 <p><%= (campground.description.replace(/<[^>]+>/g, '')).substr(0, 100) %>....</p>

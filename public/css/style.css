@@ -3747,7 +3747,7 @@ input[name=filter_value] {
 .templete_container:nth-child(4n+2) {
     margin-left:3%;
     width: 62%;
-    height: 550px;
+    height: 570px;
 }
 
 
@@ -3781,7 +3781,7 @@ input[name=filter_value] {
 .templete_container:nth-child(4n+3){
   margin-right:3%;
   width: 62%;
-  height: 550px;
+  height: 570px;
 }
 .templete_container:nth-child(4n+3) .templete_image_container {
     position:absolute;
@@ -3810,7 +3810,7 @@ input[name=filter_value] {
 
 .templete_container:nth-child(4n+4){
  width: 35%;
- height: 550px;
+ height: 570px;
 }
 
 .custom_container_for_templeate {max-width: 1920px;width: 100%;margin: 0 auto;padding: 45px 0;clear: both;margin-top: 40px;}
@@ -4119,6 +4119,9 @@ transform: translateY(20px);
     padding: 30px;
 }
 
+.templete_container:nth-child(4n+1) {
+    height: 570px;
+}
 
 
 .filter_listing_element {
@@ -4277,6 +4280,14 @@ transform: translateY(20px);
 
   .templete_image_container img {
     height: 270px;
+}
+
+.templete_container:nth-child(4n+4) {
+    height: auto;
+}
+
+.templete_container:nth-child(4n+1) {
+    height: auto;
 }
 
  .dropdown_bar .dropbtn_bar {
