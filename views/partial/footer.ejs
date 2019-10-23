@@ -64,11 +64,24 @@ function showSlides() {
   var i;
   var slides = document.getElementsByClassName("mySlides");
   var dots = document.getElementsByClassName("dot");
+  if(slides.length==3){
   for (i = 0; i < 3; i++) {
     slides[i].style.display = "none";  
   }
+}
+
+  if(slides.length==2){
+  for (i = 0; i < 2; i++) {
+    slides[i].style.display = "none";  
+  }
+}
+  if(slides.length==1){
+  for (i = 0; i < 1; i++) {
+    slides[i].style.display = "none";  
+  }
+}
   slideIndex++;
-  if (slideIndex > 3) {slideIndex = 1}    
+  if (slideIndex > slides.length) {slideIndex = 1}    
   for (i = 0; i < dots.length; i++) {
     dots[i].className = dots[i].className.replace(" active", "");
   }

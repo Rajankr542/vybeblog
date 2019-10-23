@@ -2,8 +2,9 @@
 
 <div class="container">
 <div class="row_banner_section slideshow-container">
-	<% for(i=0;i<=2;i++){ %>
-	<% if(campgrounds[i].activity_status=='active'){%>
+	<% for(i=0;i<=campgrounds.length-1;i++){ %>
+	<%if(i===3){break};%>
+	<%if(campgrounds[i].activity_status=='active'){%>
 			<div class="banner_section mySlides">
 				<div class="banner_img">
 				<img src="<%= campgrounds[i].image %>" alt="<%=campgrounds[i].alt%>">
@@ -20,12 +21,14 @@
 					 </div>
 			    </div>
 			</div>
-			<%}%>
+			<%}%>		
 	<% }; %>
-	<div class="dot_class">
-	  <span class="dot" ></span> 
-	  <span class="dot" ></span> 
-	  <span class="dot" ></span> 
+	
+	<div class="dot_class">	
+	<% for(i=0;i<=campgrounds.length-1;i++){ %>
+	<%if(i===3){break};%>
+	  <span class="dot" ></span> 		
+	<% }; %>
 	</div>
 </div>
 
@@ -37,8 +40,8 @@
 
 			<button class="dropbtn_bar">Browse Categories<i class="fa fa-caret-down"></i>
 				</button>
-				
-				<select class="btncontainer" name="filter_value" onchange="kdjflklksjdflkas()">
+				<form method="post" name="filter_value_form_mobile" action="/blogs/category/" class="mobile_filter_form_true">
+				<select class="btncontainer" name="filter_value" onchange="myFunction2()">
 					<option  value="all" disabled="">Select Category</option>
 					<option  value="all">ALL</option>
 					<option  value="Entertainment">Entertainment</option>
@@ -51,65 +54,62 @@
 					<option  value="Self Development">Self Development</option>
 					<option  value="Entertainment">Entertainment</option>
 					<option  value="Business">Business</option>
-
 					</select>
+				</form>
 
 
-				<form id="myBtnContainer" class="filter_form_true dropdown-content_bar">
 							
-
-					
-							
+							<form method="post" name="filter_value_form" action="/blogs/category/" class="filter_form_true dropdown-content_bar">
 								<div class="filter_listing_element live">
 							<label for="All">All</label>
-							<input type="radio" name="filter_value" value="All" id="All" onchange="filterSelection('all')">
+							<input type="radio" name="filter_value" value="All" id="All" onchange="myFunction()">
 							</div>
 
 
  
 							<div class="filter_listing_element">
 							<label for="Health_&_fintness">Health & fintness</label>
-							<input type="radio" name="filter_value" value="Health & fintness" id="Health_&_fintness" onchange="filterSelection('Health & fintness')">
+							<input type="radio" name="filter_value" value="Health & fintness" id="Health_&_fintness" onchange="myFunction()">
 							</div>	
 
 							<div class="filter_listing_element">
 							<label for="Travel">Travel</label>
-							<input type="radio" name="filter_value" value="Travel" id="Travel" onchange="filterSelection('Travel')">
+							<input type="radio" name="filter_value" value="Travel" id="Travel" onchange="myFunction()">
 							</div>
 
 							<div class="filter_listing_element">
 							<label for="Lifestyle_$_Leisure">Lifestyle $ Leisure</label>
-							<input type="radio" name="filter_value" value="Lifestyle $ Leisure" id="Lifestyle_$_Leisure" onchange="filterSelection('Lifestyle $ Leisure')">
+							<input type="radio" name="filter_value" value="Lifestyle $ Leisure" id="Lifestyle_$_Leisure" onchange="myFunction()">
 							</div>
 
 								<div class="filter_listing_element">
 							<label for="Music">Music</label>
-							<input type="radio" name="filter_value" value="Music" id="Music" onchange="filterSelection('Music')">
+							<input type="radio" name="filter_value" value="Music" id="Music" onchange="myFunction()">
 							</div>
 
 								<div class="filter_listing_element">
 							<label for="Technologies">Technologies</label>
-							<input type="radio" name="filter_value" value="Technologies" id="Technologies" onchange="filterSelection('Technologies')">
+							<input type="radio" name="filter_value" value="Technologies" id="Technologies" onchange="myFunction()">
 							</div>
 
 								<div class="filter_listing_element">
 							<label for="Design_&_Art">Design & Art</label>
-							<input type="radio" name="filter_value" value="Design & Art" id="Design_&_Art" onchange="filterSelection('Design & Art')">
+							<input type="radio" name="filter_value" value="Design & Art" id="Design_&_Art" onchange="myFunction()">
 							</div>
 
 								<div class="filter_listing_element">
 							<label for="Self_Development">Self Development</label>
-							<input type="radio" name="filter_value" value="Self Development" id="Self_Development" onchange="filterSelection('Self Development')">
+							<input type="radio" name="filter_value" value="Self Development" id="Self_Development" onchange="myFunction()">
 							</div>
 
 								<div class="filter_listing_element">
 							<label for="Entertainment">Entertainment</label>
-							<input type="radio" name="filter_value" value="Entertainment" id="Entertainment" onchange="filterSelection('Entertainment')">
+							<input type="radio" name="filter_value" value="Entertainment" id="Entertainment" onchange="myFunction()">
 							</div>
 
 							<div class="filter_listing_element">
 							<label for="Business">Business</label>
-							<input type="radio" name="filter_value" value="Business" id="Business" onchange="filterSelection('Business')">
+							<input type="radio" name="filter_value" value="Business" id="Business" onchange="myFunction()">
 							</div>
 					</form>		
 
@@ -121,7 +121,7 @@
 
 	<% campgrounds.forEach(function(campground){ %>
 	<% if(campground.activity_status=='active'){%>
-		<div class="filterDiv <%= campground.blogtype %> templete_container">
+		<div class="<%= campground.blogtype %> templete_container">
 			<a href="/blogs/<%=campground._id%>">
 			<div class="thumbnail">
 				<div class="templete_image_container">
@@ -149,71 +149,71 @@
 
 <script>
 
+function myFunction(){
+	var radioValue = $("input[name='filter_value']:checked").val();
+	var link = '/blogs/category/'+radioValue;
+	 $("form[name='filter_value_form']").attr("action", link);
+$("form[name='filter_value_form']").submit();
 
-// if( $(".templete_image_container").hasClass('.show')){
+}
 
-// 	$(".templete_image_container").css("background","red");
 
+function myFunction2(){
+	var iteam=$('select[name="filter_value"] option:selected').val();
+	var link = '/blogs/category/'+iteam;
+	 $("form[name='filter_value_form']").attr("action", link);
+$("form[name='filter_value_form']").submit();
+
+}
+
+
+
+// function kdjflklksjdflkas(){
+// var iteam=$('select[name="filter_value"] option:selected').val();
+// filterSelection(iteam);
+// console.log(iteam);
 // }
 
-// $('.templete_container').each(function(){
-//     if($('.templete_container').hasClass('show')) {
-//         $('.templete_container').css("background","red");
-//     } 
-// });
-
-
-
-// if ($(".templete_image_container").hasClass('show')) {
-// 	$(".templete_image_container").css("background","red");
+// filterSelection("all")
+// function filterSelection(c) {
+//   var x, i;
+//   x = document.getElementsByClassName("filterDiv");
+//   if (c == "all") c = "";
+//   for (i = 0; i < x.length; i++) {
+//     w3RemoveClass(x[i], "show");
+//     if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+//   }
 // }
 
-function kdjflklksjdflkas(){
-var iteam=$('select[name="filter_value"] option:selected').val();
-filterSelection(iteam);
-console.log(iteam);
-}
+// function w3AddClass(element, name) {
+//   var i, arr1, arr2;
+//   arr1 = element.className.split(" ");
+//   arr2 = name.split(" ");
+//   for (i = 0; i < arr2.length; i++) {
+//     if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+//   }
+// }
 
-filterSelection("all")
-function filterSelection(c) {
-  var x, i;
-  x = document.getElementsByClassName("filterDiv");
-  if (c == "all") c = "";
-  for (i = 0; i < x.length; i++) {
-    w3RemoveClass(x[i], "show");
-    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
-  }
-}
-
-function w3AddClass(element, name) {
-  var i, arr1, arr2;
-  arr1 = element.className.split(" ");
-  arr2 = name.split(" ");
-  for (i = 0; i < arr2.length; i++) {
-    if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
-  }
-}
-
-function w3RemoveClass(element, name) {
-  var i, arr1, arr2;
-  arr1 = element.className.split(" ");
-  arr2 = name.split(" ");
-  for (i = 0; i < arr2.length; i++) {
-    while (arr1.indexOf(arr2[i]) > -1) {
-      arr1.splice(arr1.indexOf(arr2[i]), 1);     
-    }
-  }
-  element.className = arr1.join(" ");
-}
-var btnContainer = document.getElementById("myBtnContainer");
-var btns = btnContainer.getElementsByClassName("filter_listing_element");
-for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function(){
-    var current = document.getElementsByClassName("live");
-    current[0].className = current[0].className.replace(" live", "");
-    this.className += " live";
-  });
-}
+// function w3RemoveClass(element, name) {
+//   var i, arr1, arr2;
+//   arr1 = element.className.split(" ");
+//   arr2 = name.split(" ");
+//   for (i = 0; i < arr2.length; i++) {
+//     while (arr1.indexOf(arr2[i]) > -1) {
+//       arr1.splice(arr1.indexOf(arr2[i]), 1);     
+//     }
+//   }
+//   element.className = arr1.join(" ");
+// }
+// var btnContainer = document.getElementById("myBtnContainer");
+// var btns = btnContainer.getElementsByClassName("filter_listing_element");
+// for (var i = 0; i < btns.length; i++) {
+//   btns[i].addEventListener("click", function(){
+//     var current = document.getElementsByClassName("live");
+//     current[0].className = current[0].className.replace(" live", "");
+//     this.className += " live";
+//   });
+// }
 </script>
 
 <% include ../partial/footer %>

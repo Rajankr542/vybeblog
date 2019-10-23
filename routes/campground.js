@@ -17,6 +17,36 @@ router.get("/blogs",function(req,res){
 });
 
 
+router.post("/blogs/category/All",function(req,res){
+var filter_value=req.params.id;
+console.log(filter_value);
+    Campground.find({}, function(err, foundcampgrounds) {
+		if(err){
+			console.log(err);
+		}else{ 
+      		  res.render("campgrounds/campgrounds",{campgrounds:foundcampgrounds});
+		}
+	});
+});
+
+
+router.post("/blogs/category/:id",function(req,res){
+var filter_value=req.params.id;
+console.log(filter_value);
+    Campground.find({'blogtype': filter_value}, function(err, foundcampgrounds) {
+		if(err){
+			console.log(err);
+		}else{
+			console.log(foundcampgrounds);
+      		  // res.redirect("/campgrounds#row filter_listing_container",{campgrounds:allcampgrounds.reverse()});  
+      		  res.render("campgrounds/campgrounds",{campgrounds:foundcampgrounds});
+		}
+	});
+});
+
+
+
+
 
 router.get("/blogs/:id",function(req,res){
 	Campground.findById(req.params.id).populate("comments").exec(function(err, foundcampground){
