@@ -42,72 +42,71 @@
 				</button>
 				<form method="post" name="filter_value_form_mobile" action="/blogs/category/" class="mobile_filter_form_true">
 				<select class="btncontainer" name="filter_value" onchange="myFunction2()">
-					<option  value="all" disabled="">Select Category</option>
-					<option  value="all">ALL</option>
-					<option  value="Entertainment">Entertainment</option>
-					<option  value="Health & fintness">Health & Fitness</option>
-					<option  value="Travel">Travel</option>
-					<option  value="Lifestyle $ Leisure">Lifestyle $ Leisure</option>
-					<option  value="Music">Music</option>
-					<option  value="Technologies">Technologies</option>
-					<option  value="Design & Art">Design & Art</option>
-					<option  value="Self Development">Self Development</option>
-					<option  value="Entertainment">Entertainment</option>
-					<option  value="Business">Business</option>
+					<option  value="all" <%if(filter_value=='All'){%>selected<%}%> disabled="" >Select Category</option>
+					<option  value="all" >ALL</option>
+					<option  value="Health & fitness" <%if(filter_value=='Health & fitness'){%>selected<%}%>>Health & Fitness</option>
+					<option  value="Travel" <%if(filter_value=='Travel'){%>selected<%}%> >Travel</option>
+					<option  value="Lifestyle & Leisure" <%if(filter_value=='Lifestyle & Leisure'){%>selected<%}%>>Lifestyle & Leisure</option>
+					<option  value="Music" <%if(filter_value=='Music'){%>selected<%}%>>Music</option>
+					<option  value="Technologies" <%if(filter_value=='Technologies'){%>selected<%}%>>Technologies</option>
+					<option  value="Design & Art" <%if(filter_value=='Design & Art'){%>selected<%}%>>Design & Art</option>
+					<option  value="Self Development" <%if(filter_value=='Self Development'){%>selected<%}%>>Self Development</option>
+					<option  value="Entertainment" <%if(filter_value=='Entertainment'){%>selected<%}%>>Entertainment</option>
+					<option  value="Business" <%if(filter_value=='Business'){%>selected<%}%> >Business</option>
 					</select>
 				</form>
 
 
 							
 							<form method="post" name="filter_value_form" action="/blogs/category/" class="filter_form_true dropdown-content_bar">
-								<div class="filter_listing_element live">
+								<div class="filter_listing_element <%if(filter_value=='All'){%>live<%}%>">
 							<label for="All">All</label>
 							<input type="radio" name="filter_value" value="All" id="All" onchange="myFunction()">
 							</div>
 
 
  
-							<div class="filter_listing_element">
-							<label for="Health_&_fintness">Health & fintness</label>
-							<input type="radio" name="filter_value" value="Health & fintness" id="Health_&_fintness" onchange="myFunction()">
+							<div class="filter_listing_element <%if(filter_value=='Health & fitness'){%>live<%}%>">
+							<label for="Health_&_fintness">Health & fitness</label>
+							<input type="radio" name="filter_value" value="Health & fitness" id="Health_&_fintness" onchange="myFunction()">
 							</div>	
 
-							<div class="filter_listing_element">
+							<div class="filter_listing_element <%if(filter_value=='Travel'){%>live<%}%>">
 							<label for="Travel">Travel</label>
 							<input type="radio" name="filter_value" value="Travel" id="Travel" onchange="myFunction()">
 							</div>
 
-							<div class="filter_listing_element">
-							<label for="Lifestyle_$_Leisure">Lifestyle $ Leisure</label>
-							<input type="radio" name="filter_value" value="Lifestyle $ Leisure" id="Lifestyle_$_Leisure" onchange="myFunction()">
+							<div class="filter_listing_element <%if(filter_value=='Lifestyle & Leisure'){%>live<%}%>">
+							<label for="Lifestyle_$_Leisure">Lifestyle & Leisure</label>
+							<input type="radio" name="filter_value" value="Lifestyle & Leisure" id="Lifestyle_$_Leisure" onchange="myFunction()">
 							</div>
 
-								<div class="filter_listing_element">
+								<div class="filter_listing_element <%if(filter_value=='Music'){%>live<%}%>">
 							<label for="Music">Music</label>
 							<input type="radio" name="filter_value" value="Music" id="Music" onchange="myFunction()">
 							</div>
 
-								<div class="filter_listing_element">
+								<div class="filter_listing_element <%if(filter_value=='Technologies'){%>live<%}%>">
 							<label for="Technologies">Technologies</label>
 							<input type="radio" name="filter_value" value="Technologies" id="Technologies" onchange="myFunction()">
 							</div>
 
-								<div class="filter_listing_element">
+								<div class="filter_listing_element <%if(filter_value=='Design & Art'){%>live<%}%>">
 							<label for="Design_&_Art">Design & Art</label>
 							<input type="radio" name="filter_value" value="Design & Art" id="Design_&_Art" onchange="myFunction()">
 							</div>
 
-								<div class="filter_listing_element">
+								<div class="filter_listing_element <%if(filter_value=='Self Development'){%>live<%}%>">
 							<label for="Self_Development">Self Development</label>
 							<input type="radio" name="filter_value" value="Self Development" id="Self_Development" onchange="myFunction()">
 							</div>
 
-								<div class="filter_listing_element">
+								<div class="filter_listing_element <%if(filter_value=='Entertainment'){%>live<%}%>">
 							<label for="Entertainment">Entertainment</label>
 							<input type="radio" name="filter_value" value="Entertainment" id="Entertainment" onchange="myFunction()">
 							</div>
 
-							<div class="filter_listing_element">
+							<div class="filter_listing_element <%if(filter_value=='Business'){%>live<%}%>">
 							<label for="Business">Business</label>
 							<input type="radio" name="filter_value" value="Business" id="Business" onchange="myFunction()">
 							</div>
@@ -151,7 +150,22 @@
 
 function myFunction(){
 	var radioValue = $("input[name='filter_value']:checked").val();
+	if(radioValue=="Health & fitness"){
+	var link = '/blogs/category/Health-&-fitness';
+}
+else if(radioValue=="Lifestyle & Leisure"){
+		var link = '/blogs/category/Lifestyle-&-Leisure';
+}
+else if(radioValue=="Design & Art"){
+	var link = '/blogs/category/Design-&-Art';
+}
+else if(radioValue=="Self Development"){
+		var link = '/blogs/category/Self-Development';
+}
+else{
 	var link = '/blogs/category/'+radioValue;
+}
+
 	 $("form[name='filter_value_form']").attr("action", link);
 $("form[name='filter_value_form']").submit();
 
