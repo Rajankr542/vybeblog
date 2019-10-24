@@ -124,7 +124,7 @@
 			<a href="/blogs/<%=campground._id%>">
 			<div class="thumbnail">
 				<div class="templete_image_container">
-				<img src="<%= campground.image %>" alt="<%=campground.alt%>">
+				<img data-src="<%= campground.image %>" class="lazy" alt="<%=campground.alt%>">
 				</div>
 				<div class="templete_descrip_container">
 				<div class="blogtype_name_for_templeate">
@@ -145,6 +145,15 @@
 	</div>
 </div>
 </div>
+
+ <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.plugins.min.js"></script>
+<script>
+	   $(function() {
+        $('.lazy').Lazy();
+    });
+</script>
+
 
 <script>
 
@@ -229,5 +238,6 @@ $("form[name='filter_value_form']").submit();
 //   });
 // }
 </script>
+   
 
 <% include ../partial/footer %>
