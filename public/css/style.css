@@ -3884,6 +3884,10 @@ label.image_upload_container img{
 }
 .templete_image_container img{
    transition: .4s ease-out;
+
+   background-image: url('../images/giphy.gif');
+   background-repeat: no-repeat;
+   background-position: 50% 50%;
 }  
 
 .templete_image_container img:hover {
